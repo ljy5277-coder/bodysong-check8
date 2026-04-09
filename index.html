@@ -4,9 +4,9 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   .page { max-width: 980px; margin: 0 auto; padding: 1.2rem 0.85rem; }
   .hero { text-align: center; margin-bottom: 1.5rem; }
-  .hero-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.4rem; }
-  .hero h1 { font-size: 22px; font-weight: 500; color: var(--color-text-primary); line-height: 1.3; margin-bottom: 0.4rem; }
-  .hero p { font-size: 14px; color: var(--color-text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+  .hero-tag { font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.4rem; }
+  .hero h1 { font-size: 28px; font-weight: 500; color: var(--color-text-primary); line-height: 1.3; margin-bottom: 0.4rem; }
+  .hero p { font-size: 18px; color: var(--color-text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.6; }
   .form-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.1rem; margin-bottom: 1.2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
   @media(max-width:560px){ .form-row { grid-template-columns:1fr; } }
@@ -107,8 +107,8 @@
 
   /* 桌機版放大 */
   @media(min-width:768px) {
-    .hero h1 { font-size: 28px; }
-    .hero p { font-size: 15px; }
+    .hero h1 { font-size: 34px; }
+    .hero p { font-size: 20px; }
     .posture-btn { font-size: 14px; }
     .tab-btn { font-size: 14px; }
     .symptom-list li { font-size: 14px; }
@@ -118,9 +118,9 @@
 
 <div class="page">
   <div class="hero">
-    <div class="hero-tag">脊椎健康評估系統</div>
+    <div class="hero-tag">逸豐整復脊椎健康評估系統</div>
     <h1>您的脊椎，還好嗎？</h1>
-    <p>輸入年齡與日常姿勢，即可對比正常脊椎與您的錯位退化進程</p>
+    <p>輸入年齡與日常姿勢<br>即可對比正常脊椎與您的錯位退化進程</p>
   </div>
 
   <div class="form-card">
@@ -179,7 +179,7 @@
     <!-- Single unified posture grid -->
     <div class="posture-grid" id="postureGrid"></div>
 
-    <button class="submit-btn" onclick="runAnalysis()">開始分析我的脊椎狀況 →</button>
+    <button class="submit-btn" onclick="runAnalysis()">身為三寶爸，我懂您為家打拼的辛苦，讓我幫您看看脊椎狀況 →</button>
   </div>
 
   <div class="result-section" id="resultSection">
@@ -248,7 +248,7 @@
       <p>我們的脊椎健康專家可為您進行完整的姿勢分析與個人化改善方案</p>
       <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:0.25rem;">
         <a href="https://lin.ee/Wpa99k9" target="_blank" style="text-decoration:none;">
-          <button class="cta-btn">📲 預約免費諮詢（Line 私訊）→</button>
+          <button class="cta-btn">📲 私訊三寶爸預約免費諮詢</button>
         </a>
         <button class="cta-btn" id="downloadBtn" onclick="downloadReport()" style="background:#3B6D11;">
           📥 下載評估報告圖片
@@ -275,7 +275,7 @@ const postureOptions = [
   { id:'squat',          icon:'🏋️', label:'錯誤搬重' },
   { id:'chin_up',        icon:'🖥️', label:'仰頭看高螢幕' },
   { id:'sleep_bad',      icon:'🛏️', label:'趴睡/不良側睡' },
-  { id:'stand_shift',    icon:'🦶', label:'重心偏移站姿' },
+  { id:'stand_shift',    icon:'🦶', label:'重心偏移站姿（３７步）' },
   { id:'twist',          icon:'🔄', label:'長時扭轉身體' },
   { id:'phone_shoulder', icon:'📞', label:'夾電話講話' },
   { id:'steps',          icon:'👟', label:'不良走路姿勢' },
