@@ -11,27 +11,17 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
   @media(max-width:560px){ .form-row { grid-template-columns:1fr; } }
   .field label { font-size: 14px; color: var(--color-text-secondary); display: block; margin-bottom: 5px; }
-  .field input, .field select { width: 100%; font-size: 16px; } /* 16px 避免 iOS 自動縮放 */
+  .field input, .field select { width: 100%; font-size: 16px; }
   .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1rem 0; }
   .section-label { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.65rem; }
 
-  /* Selected slots row */
   .selected-slots { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 0.85rem; }
-  .slot-box { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px 10px; min-height: 62px; display: flex; flex-direction: column; justify-content: center; background: var(--color-background-secondary); transition: all 0.2s; }
-  .slot-box.filled-1 { border: 1.5px solid #185FA5; background: #E6F1FB; }
-  .slot-box.filled-2 { border: 1.5px solid #185FA5; background: #E6F1FB; }
-  .slot-box.filled-3 { border: 1.5px solid #185FA5; background: #E6F1FB; }
-  .slot-box.filled-none { border: 1.5px solid #3B6D11; background: #EAF3DE; }
+  .slot-box { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px; min-height: 62px; display: flex; flex-direction: column; justify-content: center; background: var(--color-background-secondary); transition: all 0.2s; }
   .slot-num { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 3px; letter-spacing: 0.04em; }
-  .slot-num.active-num { color: #0C447C; }
-  .slot-num.none-num { color: #3B6D11; }
   .slot-val { font-size: 13px; font-weight: 500; color: var(--color-text-tertiary); display: flex; align-items: center; gap: 5px; }
-  .slot-val.has-val { color: #0C447C; }
-  .slot-val.none-val { color: #3B6D11; }
   .slot-icon { font-size: 17px; }
   .slot-empty-hint { font-size: 11px; color: var(--color-text-tertiary); font-style: italic; }
 
-  /* posture grid */
   .posture-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
   @media(min-width:500px){ .posture-grid { grid-template-columns: repeat(4,1fr); } }
   .posture-btn {
@@ -39,24 +29,15 @@
     border-radius: var(--border-radius-md);
     padding: 12px 4px 10px;
     background: var(--color-background-primary);
-    cursor: pointer;
-    font-size: 13px;
-    color: var(--color-text-secondary);
-    text-align: center;
-    transition: all 0.15s;
-    line-height: 1.4;
-    position: relative;
+    cursor: pointer; font-size: 13px; color: var(--color-text-secondary);
+    text-align: center; transition: all 0.15s; line-height: 1.4; position: relative;
   }
   .posture-btn:hover { background: var(--color-background-secondary); }
   .posture-btn .slot-indicators { display: flex; gap: 2px; position: absolute; top: 4px; right: 4px; }
   .slot-dot { width: 10px; height: 10px; border-radius: 50%; font-size: 7px; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
-  .sd1 { background: #185FA5; }
-  .sd2 { background: #BA7517; }
-  .sd3 { background: #3B6D11; }
+  .sd1 { background: #185FA5; } .sd2 { background: #BA7517; } .sd3 { background: #3B6D11; }
   .posture-icon { font-size: 26px; display: block; margin-bottom: 4px; margin-top: 2px; }
-  .none-btn { grid-column: span 1; }
 
-  /* active slot indicator strip */
   .slot-strip { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
   .slot-pill { padding: 6px 13px; border-radius: 999px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1.5px solid transparent; transition: all 0.15s; }
   .slot-pill.sp1 { background: #E6F1FB; color: #185FA5; border-color: #185FA5; }
@@ -65,52 +46,65 @@
   .slot-pill.inactive { background: var(--color-background-secondary); color: var(--color-text-tertiary); border-color: var(--color-border-secondary); }
   .active-hint { font-size: 13px; color: var(--color-text-tertiary); margin-bottom: 8px; }
 
-  .submit-btn { width: 100%; padding: 14px; background: #185FA5; color: #E6F1FB; border: none; border-radius: var(--border-radius-md); font-size: 16px; font-weight: 500; cursor: pointer; margin-top: 0.85rem; }
+  .submit-btn { width: 100%; padding: 14px; background: #185FA5; color: #E6F1FB; border: none; border-radius: var(--border-radius-md); font-size: 15px; font-weight: 500; cursor: pointer; margin-top: 0.85rem; line-height: 1.5; }
   .submit-btn:hover { background: #0C447C; }
 
-  /* results */
+  /* Results */
   .result-section { display: none; }
   .result-section.visible { display: block; }
-  .timeline-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
-  .tab-btn { padding: 7px 13px; border: 0.5px solid var(--color-border-secondary); border-radius: 999px; background: var(--color-background-primary); font-size: 13px; cursor: pointer; color: var(--color-text-secondary); transition: all 0.15s; }
-  .tab-btn.active { background: #185FA5; color: #E6F1FB; border-color: #185FA5; }
+
+  /* Timeline slider */
+  .timeline-slider-wrap { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.1rem; margin-bottom: 1rem; }
+  .tl-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+  .tl-label { font-size: 13px; color: var(--color-text-secondary); }
+  .tl-value { font-size: 20px; font-weight: 500; color: #185FA5; min-width: 80px; text-align: right; }
+  .tl-slider { width: 100%; accent-color: #185FA5; }
+  .tl-marks { display: flex; justify-content: space-between; font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  /* Compare */
   .compare-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
   @media(max-width:480px){ .compare-wrap { grid-template-columns:1fr; } }
-  .spine-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0.85rem; }
-  .panel-head { display: flex; align-items: center; gap: 8px; margin-bottom: 0.65rem; }
+  .spine-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0.75rem 0.5rem; }
+  .panel-head { display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; justify-content: center; }
   .panel-badge { font-size: 12px; padding: 3px 10px; border-radius: 999px; font-weight: 500; }
   .badge-normal { background: #EAF3DE; color: #3B6D11; }
   .badge-current { background: #FCEBEB; color: #A32D2D; }
   .panel-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
-  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+  /* Index info */
+  .index-info-bar { padding: 8px 10px; background: var(--color-background-secondary); border-radius: 8px; margin-top: 6px; }
+  .severity-bar { display: flex; gap: 3px; margin: 4px 0 3px; }
+  .sev-seg { height: 6px; border-radius: 3px; flex: 1; }
+  .risk-badge { display: inline-block; font-size: 12px; padding: 3px 11px; border-radius: 999px; font-weight: 500; margin-bottom: 4px; }
+  .risk-low { background: #EAF3DE; color: #3B6D11; }
+  .risk-mid { background: #FAEEDA; color: #854F0B; }
+  .risk-high { background: #FCEBEB; color: #A32D2D; }
+  .risk-severe { background: #F5C4B3; color: #993C1D; }
+
+  /* Pelvis info */
+  .pelvis-info { margin-top: 6px; font-size: 12px; color: var(--color-text-secondary); text-align: center; line-height: 1.5; }
+
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
   @media(max-width:560px){ .result-grid { grid-template-columns:1fr; } }
   .symptom-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0.85rem; }
   .symptom-list { list-style: none; }
   .symptom-list li { font-size: 13px; color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; align-items: flex-start; gap: 7px; line-height: 1.6; }
   .symptom-list li:last-child { border-bottom: none; }
   .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-  .dot-warn { background: #BA7517; }
-  .dot-danger { background: #A32D2D; }
-  .dot-info { background: #185FA5; }
-  .severity-bar { display: flex; gap: 3px; margin: 5px 0 4px; }
-  .sev-seg { height: 6px; border-radius: 3px; flex: 1; }
-  .risk-badge { display: inline-block; font-size: 12px; padding: 3px 11px; border-radius: 999px; font-weight: 500; margin-bottom: 5px; }
-  .risk-low { background: #EAF3DE; color: #3B6D11; }
-  .risk-mid { background: #FAEEDA; color: #854F0B; }
-  .risk-high { background: #FCEBEB; color: #A32D2D; }
-  .risk-severe { background: #F5C4B3; color: #993C1D; }
+  .dot-warn { background: #BA7517; } .dot-danger { background: #A32D2D; } .dot-info { background: #185FA5; }
+
+  .alert { background: #FAEEDA; border: 0.5px solid #FAC775; border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 13px; color: #633806; margin-bottom: 0.85rem; line-height: 1.6; }
   .cta-card { background: #E6F1FB; border: 0.5px solid #B5D4F4; border-radius: var(--border-radius-lg); padding: 1.1rem; text-align: center; margin-top: 1rem; }
   .cta-card h3 { font-size: 17px; font-weight: 500; color: #0C447C; margin-bottom: 0.4rem; }
   .cta-card p { font-size: 13px; color: #185FA5; margin-bottom: 0.75rem; line-height: 1.6; }
   .cta-btn { background: #185FA5; color: #E6F1FB; border: none; border-radius: var(--border-radius-md); padding: 12px 22px; font-size: 15px; font-weight: 500; cursor: pointer; }
-  .alert { background: #FAEEDA; border: 0.5px solid #FAC775; border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 13px; color: #633806; margin-bottom: 0.85rem; line-height: 1.6; }
+  .chain { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-top: 8px; }
+  .chip { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; }
 
-  /* 桌機版放大 */
   @media(min-width:768px) {
     .hero h1 { font-size: 34px; }
     .hero p { font-size: 20px; }
     .posture-btn { font-size: 14px; }
-    .tab-btn { font-size: 14px; }
     .symptom-list li { font-size: 14px; }
     .cta-card h3 { font-size: 19px; }
   }
@@ -151,58 +145,56 @@
     </div>
 
     <div class="section-label">慣用錯誤姿勢</div>
-
-    <!-- Selected summary row -->
     <div class="selected-slots" id="selectedSlots">
-      <div class="slot-box" id="slotBox0">
-        <div class="slot-num">姿勢 1</div>
-        <div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div>
-      </div>
-      <div class="slot-box" id="slotBox1">
-        <div class="slot-num">姿勢 2</div>
-        <div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div>
-      </div>
-      <div class="slot-box" id="slotBox2">
-        <div class="slot-num">姿勢 3</div>
-        <div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div>
-      </div>
+      <div class="slot-box" id="slotBox0"><div class="slot-num">姿勢 1</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div></div>
+      <div class="slot-box" id="slotBox1"><div class="slot-num">姿勢 2</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div></div>
+      <div class="slot-box" id="slotBox2"><div class="slot-num">姿勢 3</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div></div>
     </div>
-
-    <!-- Active slot pills -->
     <div class="slot-strip">
-      <button class="slot-pill sp1 active" id="pill0" onclick="setActiveSlot(0)">選擇姿勢 1</button>
-      <button class="slot-pill sp2 inactive" id="pill1" onclick="setActiveSlot(1)">選擇姿勢 2</button>
-      <button class="slot-pill sp3 inactive" id="pill2" onclick="setActiveSlot(2)">選擇姿勢 3</button>
+      <button class="slot-pill sp1" id="pill0" onclick="setActiveSlot(0)">選擇姿勢 1</button>
+      <button class="slot-pill inactive" id="pill1" onclick="setActiveSlot(1)">選擇姿勢 2</button>
+      <button class="slot-pill inactive" id="pill2" onclick="setActiveSlot(2)">選擇姿勢 3</button>
     </div>
     <div class="active-hint" id="activeHint">請從下方點選「姿勢 1」的選項</div>
-
-    <!-- Single unified posture grid -->
     <div class="posture-grid" id="postureGrid"></div>
-
     <button class="submit-btn" onclick="runAnalysis()">身為三寶爸，我懂您為家打拼的辛苦，讓我幫您看看脊椎狀況 →</button>
   </div>
 
   <div class="result-section" id="resultSection">
     <div class="alert" id="alertMsg"></div>
-    <div class="section-label" style="margin-bottom:0.6rem;">選擇時間軸查看錯位進程</div>
-    <div class="timeline-tabs" id="timelineTabs"></div>
+
+    <!-- 時間軸滑桿 -->
+    <div class="timeline-slider-wrap">
+      <div class="tl-top">
+        <span class="tl-label">退化時間軸</span>
+        <span class="tl-value" id="tlDisplay">目前狀態</span>
+      </div>
+      <input type="range" class="tl-slider" id="yearSlider" min="0" max="100" value="0" step="1" oninput="onYearSlide(this.value)">
+      <div class="tl-marks">
+        <span>現在</span><span>10年</span><span>20年</span><span>30年</span><span>40年</span><span>50年</span><span>60年</span><span>70年</span><span>80年</span><span>90年</span><span>100年</span>
+      </div>
+    </div>
+
+    <!-- 左右對比（含骨盆） -->
     <div class="compare-wrap">
       <div class="spine-panel">
         <div class="panel-head"><span class="panel-badge badge-normal">正常脊椎</span><span class="panel-title">標準對照</span></div>
-        <svg id="svgNormal" viewBox="-20 0 200 395" width="100%" style="max-height:360px;display:block;margin:0 auto;"></svg>
+        <svg id="svgNormal" viewBox="0 0 170 660" width="100%" style="display:block;margin:0 auto;"></svg>
       </div>
       <div class="spine-panel">
         <div class="panel-head">
           <span class="panel-badge badge-current" id="currentBadge">現在狀態</span>
           <span class="panel-title" id="currentTitle">您的脊椎</span>
         </div>
-        <svg id="svgCurrent" viewBox="-20 0 220 395" width="100%" style="max-height:360px;display:block;margin:0 auto;"></svg>
-        <div id="indexInfo" style="margin-top:0.5rem;"></div>
+        <svg id="svgUser" viewBox="0 0 170 660" width="100%" style="display:block;margin:0 auto;"></svg>
+        <div class="index-info-bar" id="indexInfo"></div>
+        <div class="pelvis-info" id="pelvisInfo"></div>
       </div>
     </div>
+
     <div class="result-grid">
       <div class="symptom-panel">
-        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.75rem;">受影響節段 & 神經反射症狀</div>
+        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.75rem;">受影響節段 &amp; 神經反射症狀</div>
         <div id="symptomContent"></div>
       </div>
       <div class="symptom-panel">
@@ -211,38 +203,35 @@
       </div>
     </div>
 
-    <!-- 脊椎結構變化與退化進程 -->
+    <!-- 結構變化分析 -->
     <div style="margin-top:1rem; border-radius:var(--border-radius-lg); overflow:hidden; border:0.5px solid var(--color-border-tertiary);">
       <div style="background:#1a4a7a; padding:12px 16px;">
         <div style="font-size:15px; font-weight:600; color:#E6F1FB; letter-spacing:0.04em;">🦴 脊椎結構變化分析</div>
       </div>
       <div style="background:var(--color-background-primary); padding:14px 16px;">
-        <!-- 結構變化流程 -->
         <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.06em;">結構變化進程</div>
-        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-bottom:16px;" id="structureChain">
-          <div style="background:#E6F1FB; border:1px solid #B5D4F4; border-radius:8px; padding:7px 13px; font-size:14px; color:#0C447C; font-weight:500; white-space:nowrap;">骨盆傾斜</div>
-          <div style="color:#BA7517; font-size:18px; font-weight:700;">→</div>
-          <div style="background:#E6F1FB; border:1px solid #B5D4F4; border-radius:8px; padding:7px 13px; font-size:14px; color:#0C447C; font-weight:500; white-space:nowrap;">薦椎偏移</div>
-          <div style="color:#BA7517; font-size:18px; font-weight:700;">→</div>
-          <div style="background:#FAEEDA; border:1px solid #FAC775; border-radius:8px; padding:7px 13px; font-size:14px; color:#854F0B; font-weight:500; white-space:nowrap;">腰椎代償側彎</div>
-          <div style="color:#A32D2D; font-size:18px; font-weight:700;">/</div>
-          <div style="background:#FAEEDA; border:1px solid #FAC775; border-radius:8px; padding:7px 13px; font-size:14px; color:#854F0B; font-weight:500; white-space:nowrap;">胸椎後凸增加</div>
-          <div style="color:#BA7517; font-size:18px; font-weight:700;">→</div>
-          <div style="background:#FCEBEB; border:1px solid #F09595; border-radius:8px; padding:7px 13px; font-size:14px; color:#7B1F1F; font-weight:500; white-space:nowrap;">腰椎壓縮</div>
-          <div style="color:#A32D2D; font-size:18px; font-weight:700;">→</div>
-          <div style="background:#FCEBEB; border:1px solid #F09595; border-radius:8px; padding:7px 13px; font-size:14px; color:#7B1F1F; font-weight:500; white-space:nowrap;">椎間盤受壓</div>
+        <div class="chain" id="structureChain">
+          <div class="chip" style="background:#E6F1FB;color:#0C447C;">骨盆傾斜</div>
+          <span style="color:#BA7517;font-size:16px;font-weight:700;">→</span>
+          <div class="chip" style="background:#E6F1FB;color:#0C447C;">薦椎偏移</div>
+          <span style="color:#BA7517;font-size:16px;font-weight:700;">→</span>
+          <div class="chip" style="background:#FAEEDA;color:#854F0B;">腰椎代償側彎</div>
+          <span style="color:#A32D2D;font-size:16px;font-weight:700;">/</span>
+          <div class="chip" style="background:#FAEEDA;color:#854F0B;">胸椎後凸增加</div>
+          <span style="color:#BA7517;font-size:16px;font-weight:700;">→</span>
+          <div class="chip" style="background:#FCEBEB;color:#7B1F1F;">腰椎壓縮</div>
+          <span style="color:#A32D2D;font-size:16px;font-weight:700;">→</span>
+          <div class="chip" style="background:#FCEBEB;color:#7B1F1F;">椎間盤受壓</div>
         </div>
-        <!-- 退化進程說明 -->
-        <div style="height:0.5px; background:var(--color-border-tertiary); margin-bottom:14px;"></div>
+        <div style="height:0.5px; background:var(--color-border-tertiary); margin:14px 0;"></div>
         <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">退化進程說明</div>
-        <div style="display:flex; align-items:flex-start; gap:10px; background:#FFF8EE; border:1px solid #FAC775; border-radius:8px; padding:12px 14px;">
+        <div id="degenDesc" style="display:flex; align-items:flex-start; gap:10px; background:#FFF8EE; border:1px solid #FAC775; border-radius:8px; padding:12px 14px;">
           <div style="font-size:22px; flex-shrink:0;">⚠️</div>
-          <div style="font-size:15px; color:#633806; line-height:1.7;">
-            關節壓力累積，局部緊繃明顯。長期姿勢不良導致脊椎各節段承受不均勻的壓力，若未及時矯正，將加速椎間盤退化與神經壓迫風險。
-          </div>
+          <div style="font-size:14px; color:#633806; line-height:1.7;">關節壓力累積，局部緊繃明顯。長期姿勢不良導致脊椎各節段承受不均勻的壓力，若未及時矯正，將加速椎間盤退化與神經壓迫風險。</div>
         </div>
       </div>
     </div>
+
     <div class="cta-card">
       <h3>建議及早接受專業脊椎評估</h3>
       <p>我們的脊椎健康專家可為您進行完整的姿勢分析與個人化改善方案</p>
@@ -256,7 +245,6 @@
       </div>
     </div>
 
-    <!-- 隱私聲明 -->
     <div style="margin-top: 1.5rem; padding: 14px 16px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); text-align: center;">
       <p style="font-size: 12px; color: var(--color-text-tertiary); line-height: 1.7; margin: 0;">
         🔒 您所填寫的資料僅供逸豐整復進行脊椎健康分析與諮詢預約使用，我們承諾嚴格保護您的個人隱私。
@@ -267,18 +255,18 @@
 
 <script>
 const postureOptions = [
-  { id:'cross_leg',      icon:'🦵', label:'蹺腳坐' },
-  { id:'forward_head',   icon:'📱', label:'低頭滑手機' },
-  { id:'hunch',          icon:'🪑', label:'彎腰駝背' },
-  { id:'sideslip',       icon:'💻', label:'歪頭看螢幕' },
-  { id:'oneshoulder',    icon:'🎒', label:'單肩背重物' },
-  { id:'squat',          icon:'🏋️', label:'錯誤搬重' },
-  { id:'chin_up',        icon:'🖥️', label:'仰頭看高螢幕' },
-  { id:'sleep_bad',      icon:'🛏️', label:'趴睡/不良側睡' },
-  { id:'stand_shift',    icon:'🦶', label:'重心偏移站姿（３７步）' },
-  { id:'twist',          icon:'🔄', label:'長時扭轉身體' },
-  { id:'phone_shoulder', icon:'📞', label:'夾電話講話' },
-  { id:'steps',          icon:'👟', label:'不良走路姿勢' },
+  { id:'cross_leg',      icon:'🦵', label:'蹺腳坐',            pelvicType:'sit' },
+  { id:'forward_head',   icon:'📱', label:'低頭滑手機',         pelvicType:'sit' },
+  { id:'hunch',          icon:'🪑', label:'彎腰駝背',           pelvicType:'sit' },
+  { id:'sideslip',       icon:'💻', label:'歪頭看螢幕',         pelvicType:'sit' },
+  { id:'oneshoulder',    icon:'🎒', label:'單肩背重物',         pelvicType:'stand' },
+  { id:'squat',          icon:'🏋️', label:'錯誤搬重',          pelvicType:'stand' },
+  { id:'chin_up',        icon:'🖥️', label:'仰頭看高螢幕',      pelvicType:'sit' },
+  { id:'sleep_bad',      icon:'🛏️', label:'趴睡/不良側睡',     pelvicType:'sit' },
+  { id:'stand_shift',    icon:'🦶', label:'重心偏移站姿（３７步）', pelvicType:'stand' },
+  { id:'twist',          icon:'🔄', label:'長時扭轉身體',       pelvicType:'stand' },
+  { id:'phone_shoulder', icon:'📞', label:'夾電話講話',         pelvicType:'stand' },
+  { id:'steps',          icon:'👟', label:'不良走路姿勢',       pelvicType:'stand' },
 ];
 
 const postureEffects = {
@@ -329,15 +317,6 @@ const spineSegs = ['C1','C2','C3','C4','C5','C6','C7',
   'T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12',
   'L1','L2','L3','L4','L5','S1','S2'];
 
-const timePoints = [
-  { label:'現在',    years:0  },
-  { label:'1 年後',  years:1  },
-  { label:'2 年後',  years:2  },
-  { label:'5 年後',  years:5  },
-  { label:'10 年後', years:10 },
-  { label:'20 年後', years:20 },
-];
-
 const slotColors = [
   { dot:'sd1', pill:'sp1', border:'#185FA5', bg:'#E6F1FB', text:'#0C447C' },
   { dot:'sd2', pill:'sp2', border:'#BA7517',  bg:'#FAEEDA', text:'#7A4B00' },
@@ -350,10 +329,12 @@ const hintTexts = [
   '請從下方點選「姿勢 3」的選項（可選「無」）',
 ];
 
-let selectedPostures = [null, null, null]; // {id, icon, label} or {id:'none'}
+let selectedPostures = [null, null, null];
 let activeSlot = 0;
 let analysisData = null;
+let currentYears = 0;
 
+/* ===================== 姿勢選擇 UI ===================== */
 function buildGrid() {
   const grid = document.getElementById('postureGrid');
   grid.innerHTML = '';
@@ -365,9 +346,8 @@ function buildGrid() {
     btn.onclick = () => pickPosture(p.id, p.icon, p.label);
     grid.appendChild(btn);
   });
-  // none button
   const none = document.createElement('button');
-  none.className = 'posture-btn none-btn';
+  none.className = 'posture-btn';
   none.dataset.id = 'none';
   none.innerHTML = `<span class="slot-indicators" id="ind_none"></span><span class="posture-icon">—</span>無`;
   none.onclick = () => pickPosture('none', '—', '無');
@@ -376,14 +356,10 @@ function buildGrid() {
 }
 
 function pickPosture(id, icon, label) {
-  // clear this slot's previous selection indicator
   selectedPostures[activeSlot] = { id, icon, label };
   updateSlotBox(activeSlot);
   refreshIndicators();
-  // auto advance slot
-  if (activeSlot < 2) {
-    setActiveSlot(activeSlot + 1);
-  }
+  if (activeSlot < 2) setActiveSlot(activeSlot + 1);
 }
 
 function setActiveSlot(slot) {
@@ -392,13 +368,7 @@ function setActiveSlot(slot) {
   [0,1,2].forEach(i => {
     const pill = document.getElementById(`pill${i}`);
     const sc = slotColors[i];
-    if (i === slot) {
-      pill.classList.remove('inactive');
-      pill.classList.add(sc.pill);
-    } else {
-      pill.classList.remove(sc.pill);
-      pill.classList.add('inactive');
-    }
+    pill.className = 'slot-pill ' + (i === slot ? sc.pill : 'inactive');
   });
 }
 
@@ -406,43 +376,32 @@ function updateSlotBox(slot) {
   const box = document.getElementById(`slotBox${slot}`);
   const p = selectedPostures[slot];
   const sc = slotColors[slot];
-  box.className = 'slot-box';
   if (!p) {
+    box.style.border = ''; box.style.background = '';
     box.innerHTML = `<div class="slot-num">姿勢 ${slot+1}</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div>`;
     return;
   }
   const isNone = p.id === 'none';
-  box.style.border = `1.5px solid ${isNone && slot===2 ? '#3B6D11' : sc.border}`;
-  box.style.background = isNone && slot===2 ? '#EAF3DE' : sc.bg;
-  const numColor = isNone && slot===2 ? '#3B6D11' : sc.text;
-  const valColor = numColor;
-  box.innerHTML = `
-    <div class="slot-num" style="color:${numColor};">姿勢 ${slot+1}</div>
-    <div class="slot-val" style="color:${valColor};">
-      <span class="slot-icon">${p.icon}</span>${p.label}
-    </div>`;
+  box.style.border = `1.5px solid ${isNone ? '#3B6D11' : sc.border}`;
+  box.style.background = isNone ? '#EAF3DE' : sc.bg;
+  const col = isNone ? '#3B6D11' : sc.text;
+  box.innerHTML = `<div class="slot-num" style="color:${col};">姿勢 ${slot+1}</div>
+    <div class="slot-val" style="color:${col};"><span class="slot-icon">${p.icon}</span>${p.label}</div>`;
 }
 
 function refreshIndicators() {
-  // clear all
   document.querySelectorAll('[id^="ind_"]').forEach(el => el.innerHTML = '');
   selectedPostures.forEach((p, i) => {
     if (!p || p.id === 'none') return;
     const el = document.getElementById(`ind_${p.id}`);
-    if (el) {
-      el.innerHTML += `<span class="slot-dot ${slotColors[i].dot}">${i+1}</span>`;
-    }
+    if (el) el.innerHTML += `<span class="slot-dot ${slotColors[i].dot}">${i+1}</span>`;
   });
 }
 
+/* ===================== 分析主流程 ===================== */
 function runAnalysis() {
-  const age   = parseInt(document.getElementById('userAge').value);
-  const name  = '客戶';
-  const phone = '—';
-  const line  = '—';
-  const email = '—';
-  const work  = document.getElementById('workType').value;
-
+  const age  = parseInt(document.getElementById('userAge').value);
+  const work = document.getElementById('workType').value;
   if (!age || age < 10 || age > 90) { alert('請輸入正確年齡（10-90）'); return; }
   if (!selectedPostures[0]) { alert('請選擇姿勢 1'); return; }
   if (!selectedPostures[1]) { alert('請選擇姿勢 2'); return; }
@@ -462,79 +421,93 @@ function runAnalysis() {
   const ageFactor = age < 30 ? 0.75 : age < 45 ? 1.0 : age < 60 ? 1.35 : 1.65;
   const workMult  = { desk:1.2, stand:1.15, labor:1.35, drive:1.25, mixed:1.0 }[work] || 1.0;
 
-  analysisData = { age, name, phone, line, email, work, activePosIds, affectedMap, ageFactor, workMult };
+  // 判斷骨盆傾斜主導類型
+  let sitCount = 0, standCount = 0;
+  activePosIds.forEach(pid => {
+    const opt = postureOptions.find(o => o.id === pid);
+    if (opt && opt.pelvicType === 'sit') sitCount++;
+    if (opt && opt.pelvicType === 'stand') standCount++;
+  });
+  const pelvicType = sitCount >= standCount ? 'sit' : 'stand';
+  const pelvicSeverity = Math.min(1, activePosIds.length * 0.35 + (sitCount + standCount) * 0.1);
+
+  analysisData = { age, work, activePosIds, affectedMap, ageFactor, workMult, pelvicType, pelvicSeverity };
 
   const postureDesc = selectedPostures.map((p,i) => p ? `${['①','②','③'][i]}${p.label}` : '').filter(Boolean).join('、');
   document.getElementById('alertMsg').textContent =
-    `${name}，根據您的年齡（${age}歲）及姿勢習慣（${postureDesc}），以下為您的脊椎錯位預測。請選擇不同時間點查看進程。`;
+    `根據您的年齡（${age}歲）及姿勢習慣（${postureDesc}），以下為您的脊椎錯位預測。拖動時間軸查看退化進程。`;
 
-  buildTimeline();
+  document.getElementById('yearSlider').value = 0;
+  currentYears = 0;
+  document.getElementById('tlDisplay').textContent = '目前狀態';
+
   document.getElementById('resultSection').classList.add('visible');
   document.getElementById('resultSection').scrollIntoView({ behavior:'smooth', block:'start' });
-  selectTime(0);
 
-  // 計算錯位指數與風險等級（現在）
-  let totalDisp = 0, count = 0;
-  spineSegs.forEach(r => {
-    const disp = getSegDisplace(r, 0, affectedMap, ageFactor, workMult);
-    if (disp > 0) { totalDisp += disp; count++; }
-  });
-  const avgIdx = count > 0 ? totalDisp / count : 0;
-  const oi = Math.min(10, avgIdx * 0.72);
-  const level = oi<2?'輕微錯位':oi<4.5?'中度錯位':oi<7?'重度錯位':'嚴重錯位';
+  renderAll(0);
+
+  // 送出到 Google 試算表
   const workLabel = { desk:'長時間久坐辦公', stand:'長時間久站', labor:'重複性勞力工作', drive:'長途駕駛', mixed:'活動型（外出為主）' }[work] || work;
-
-  // 送出資料到 Google 試算表
-  submitToSheet({
-    age: age,
-    work: workLabel,
-    posture1: selectedPostures[0] ? selectedPostures[0].label : '—',
-    posture2: selectedPostures[1] ? selectedPostures[1].label : '—',
-    posture3: selectedPostures[2] ? selectedPostures[2].label : '—',
+  let totalDisp = 0, cnt = 0;
+  spineSegs.forEach(r => { const d = getSegDisplace(r, 0); if(d>0){totalDisp+=d;cnt++;} });
+  const oi = Math.min(10, (cnt>0?totalDisp/cnt:0) * 0.72);
+  const level = oi<2?'輕微錯位':oi<4.5?'中度錯位':oi<7?'重度錯位':'嚴重錯位';
+  submitToSheet({ age, work:workLabel,
+    posture1: selectedPostures[0]?.label||'—',
+    posture2: selectedPostures[1]?.label||'—',
+    posture3: selectedPostures[2]?.label||'—',
     affected: Object.keys(affectedMap).join('、'),
-    riskIndex: oi.toFixed(1),
-    riskLevel: level
+    riskIndex: oi.toFixed(1), riskLevel: level
   });
 }
 
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxfa-xSaoQLHsArjNyKZc6HlmuIxwQ5KlYCe3YAl_8u_JvTDAAmurGLdLQD4tvSCNvM/exec';
-
 function submitToSheet(data) {
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  }).catch(err => console.warn('資料回傳失敗：', err));
+  fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
+    .catch(err => console.warn('資料回傳失敗：', err));
 }
 
-function buildTimeline() {
-  const tabs = document.getElementById('timelineTabs');
-  tabs.innerHTML = '';
-  timePoints.forEach((t, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'tab-btn' + (i===0?' active':'');
-    btn.textContent = t.label;
-    btn.onclick = () => {
-      tabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectTime(i);
-    };
-    tabs.appendChild(btn);
-  });
+/* ===================== 時間軸滑桿 ===================== */
+function onYearSlide(val) {
+  currentYears = parseInt(val);
+  const disp = currentYears === 0 ? '目前狀態' : `${currentYears} 年後`;
+  document.getElementById('tlDisplay').textContent = disp;
+  document.getElementById('currentBadge').textContent = currentYears === 0 ? '現在狀態' : `${currentYears} 年後`;
+  document.getElementById('currentTitle').textContent = currentYears === 0 ? '您的脊椎（目前）' : `您的脊椎（${currentYears}年後預測）`;
+  if (analysisData) renderAll(currentYears);
 }
 
-function selectTime(idx) {
-  const years = timePoints[idx].years;
-  document.getElementById('currentBadge').textContent = years === 0 ? '現在狀態' : `${years} 年後`;
-  document.getElementById('currentTitle').textContent  = years === 0 ? '您的脊椎（目前）' : `您的脊椎（${years}年後預測）`;
-  renderNormalSpine();
-  renderCurrentSpine(years);
+function renderAll(years) {
+  drawNormalSpine();
+  drawUserSpine(years);
   renderSymptoms(years);
   renderSegmentBars(years);
+  updateDegenDesc(years);
 }
 
-const segH = 11, segW = 56, cx = 80, startY = 14, gap = 2;
+/* ===================== 錯位計算 ===================== */
+function getSegDisplace(r, years) {
+  if (!analysisData || !analysisData.affectedMap[r]) return 0;
+  const { affectedMap, ageFactor, workMult } = analysisData;
+  const base = affectedMap[r] * ageFactor * workMult;
+  const tm = Math.min(1, 0.12 + years * 0.0088);
+  return Math.min(14, base * tm);
+}
+
+/* ===================== SVG 繪製常數 ===================== */
+const CX = 85;
+const SEGS_DEF = [
+  {name:'C1',h:11,w:38},{name:'C2',h:11,w:38},{name:'C3',h:12,w:40},
+  {name:'C4',h:12,w:40},{name:'C5',h:12,w:42},{name:'C6',h:12,w:42},{name:'C7',h:13,w:44},
+  {name:'T1',h:13,w:46},{name:'T2',h:13,w:46},{name:'T3',h:13,w:47},
+  {name:'T4',h:13,w:47},{name:'T5',h:13,w:48},{name:'T6',h:14,w:48},
+  {name:'T7',h:14,w:49},{name:'T8',h:14,w:49},{name:'T9',h:14,w:50},
+  {name:'T10',h:14,w:50},{name:'T11',h:14,w:50},{name:'T12',h:15,w:51},
+  {name:'L1',h:17,w:54},{name:'L2',h:18,w:55},{name:'L3',h:19,w:56},
+  {name:'L4',h:20,w:57},{name:'L5',h:20,w:58},
+  {name:'S1',h:16,w:56},{name:'S2',h:12,w:50},
+];
+const DISC_H = 4;
 
 function getGroupColor(r) {
   if (r.startsWith('C')) return { fill:'#B5D4F4', stroke:'#185FA5', text:'#0C447C' };
@@ -543,156 +516,235 @@ function getGroupColor(r) {
   return { fill:'#C0DD97', stroke:'#3B6D11', text:'#27500A' };
 }
 
-function getSpineGroups() {
-  // 回傳各區段的起始/結束 index 及名稱、顏色
-  return [
-    { label:'頸椎', prefix:'C', start:0,  end:6,  color:'#185FA5' },
-    { label:'胸椎', prefix:'T', start:7,  end:18, color:'#BA7517' },
-    { label:'腰椎', prefix:'L', start:19, end:23, color:'#A32D2D' },
-    { label:'薦椎', prefix:'S', start:24, end:25, color:'#3B6D11' },
-  ];
-}
+/* ---- 繪製骨盆 SVG ---- */
+function drawPelvis(cx, topY, tiltT, pelvicType, isUser) {
+  let out = '';
+  const posterior = pelvicType === 'sit' ? tiltT * 18 : 0;
+  const lateral   = pelvicType === 'stand' ? tiltT * 14 : 0;
+  const leftY  = topY - lateral;
+  const rightY = topY + lateral;
+  const sacY   = topY + posterior * 0.35;
 
-function renderSpineGroupLabels(out, side='left') {
-  // 在脊椎左側畫區域標示線 + 文字
-  const groups = getSpineGroups();
-  groups.forEach(g => {
-    const yTop    = startY + g.start * (segH + gap);
-    const yBottom = startY + g.end   * (segH + gap) + segH;
-    const yMid    = (yTop + yBottom) / 2;
-    const lx = side === 'left' ? cx - segW/2 - 18 : cx + segW/2 + 18;
-    const lineX = side === 'left' ? cx - segW/2 - 6 : cx + segW/2 + 6;
-    const anchor = side === 'left' ? 'end' : 'start';
-    // 括弧線
-    out += `<line x1="${lineX}" y1="${yTop+2}" x2="${lineX}" y2="${yBottom-2}" stroke="${g.color}" stroke-width="1.5" opacity="0.6"/>`;
-    out += `<line x1="${lineX}" y1="${yTop+2}" x2="${lineX+(side==='left'?3:-3)}" y2="${yTop+2}" stroke="${g.color}" stroke-width="1.5" opacity="0.6"/>`;
-    out += `<line x1="${lineX}" y1="${yBottom-2}" x2="${lineX+(side==='left'?3:-3)}" y2="${yBottom-2}" stroke="${g.color}" stroke-width="1.5" opacity="0.6"/>`;
-    // 文字
-    out += `<text x="${lx}" y="${yMid+3.5}" text-anchor="${anchor}" font-size="10" fill="${g.color}" font-weight="600" font-family="var(--font-sans)">${g.label}</text>`;
-  });
+  // 骨盆主體
+  const lhx = cx - 40, rhx = cx + 40;
+  const lhy = leftY + 8, rhy = rightY + 8;
+  const sacTop = sacY - 8 + posterior * 0.25;
+  out += `<path d="M${lhx},${lhy-26} Q${cx-26},${leftY-34} ${cx},${sacTop} Q${cx+26},${rightY-34} ${rhx},${rhy-26}
+    Q${rhx+7},${rhy+8} ${rhx+3},${rhy+24}
+    Q${cx+18},${sacY+36} ${cx},${sacY+40}
+    Q${cx-18},${sacY+36} ${lhx-3},${lhy+24}
+    Q${lhx-7},${lhy+8} ${lhx},${lhy-26}Z"
+    fill="${isUser?'#e4d5c0':'#ddd0c0'}" stroke="${isUser&&(posterior>4||lateral>3)?'#BA7517':'#9a8870'}" stroke-width="${isUser&&(posterior>5||lateral>4)?'1.2':'0.7'}"/>`;
+
+  // 薦椎小橢圓
+  out += `<ellipse cx="${cx}" cy="${sacTop+5}" rx="12" ry="${8-posterior*0.15}" fill="#e8ddd0" stroke="#9a8870" stroke-width="0.6"/>`;
+
+  // 髖關節
+  out += `<ellipse cx="${lhx}" cy="${lhy}" rx="10" ry="10" fill="none" stroke="#b0a080" stroke-width="1.5"/>`;
+  out += `<ellipse cx="${lhx}" cy="${lhy}" rx="5.5" ry="5.5" fill="#e8d8c0" stroke="#a09070" stroke-width="0.5"/>`;
+  out += `<ellipse cx="${rhx}" cy="${rhy}" rx="10" ry="10" fill="none" stroke="#b0a080" stroke-width="1.5"/>`;
+  out += `<ellipse cx="${rhx}" cy="${rhy}" rx="5.5" ry="5.5" fill="#e8d8c0" stroke="#a09070" stroke-width="0.5"/>`;
+
+  // 傾斜程度標注
+  if (isUser && posterior > 4) {
+    const col = posterior < 10 ? '#BA7517' : '#A32D2D';
+    out += `<text x="${cx}" y="${sacTop-14}" text-anchor="middle" font-size="8.5" fill="${col}" font-weight="600" font-family="sans-serif">骨盆後傾 ${Math.round(posterior)}°</text>`;
+  }
+  if (isUser && lateral > 3) {
+    const col = lateral < 8 ? '#BA7517' : '#A32D2D';
+    out += `<text x="${cx}" y="${Math.min(leftY,rightY)-14}" text-anchor="middle" font-size="8.5" fill="${col}" font-weight="600" font-family="sans-serif">骨盆側傾 ${Math.round(lateral)}°</text>`;
+    // 傾斜輔助線
+    out += `<line x1="${cx-42}" y1="${leftY-6}" x2="${cx+42}" y2="${rightY-6}" stroke="${col}" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>`;
+  }
+
+  // 標籤
+  out += `<text x="${cx}" y="${sacY+50}" text-anchor="middle" font-size="8" fill="#5F5E5A" font-family="sans-serif">薦椎</text>`;
+  out += `<text x="${lhx}" y="${lhy+18}" text-anchor="middle" font-size="8" fill="#5F5E5A" font-family="sans-serif">髖關</text>`;
+  out += `<text x="${rhx}" y="${rhy+18}" text-anchor="middle" font-size="8" fill="#5F5E5A" font-family="sans-serif">髖關</text>`;
+
   return out;
 }
 
-function renderNormalSpine() {
+/* ---- 正常脊椎 ---- */
+function drawNormalSpine() {
   const svg = document.getElementById('svgNormal');
   let out = '';
-  spineSegs.forEach((r, i) => {
-    const y = startY + i * (segH + gap);
-    const c = getGroupColor(r);
-    out += `<rect x="${cx-segW/2}" y="${y}" width="${segW}" height="${segH}" rx="3" fill="${c.fill}" opacity="0.7"/>`;
-    out += `<text x="${cx}" y="${y+segH/2+3.5}" text-anchor="middle" font-size="7" fill="${c.text}" font-family="var(--font-sans)">${r}</text>`;
-    if (i < spineSegs.length-1)
-      out += `<rect x="${cx-segW/2+10}" y="${y+segH}" width="${segW-20}" height="${gap}" rx="1" fill="#D3D1C7" opacity="0.6"/>`;
+  out += spineDefs('n');
+  // 脊髓管
+  out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.2"/>`;
+
+  let y = 10;
+  SEGS_DEF.forEach((seg, i) => {
+    const c = getGroupColor(seg.name);
+    const bx = CX - seg.w / 2;
+    out += `<rect x="${bx}" y="${y}" width="${seg.w}" height="${seg.h}" rx="3" fill="${c.fill}" stroke="${c.stroke}" stroke-width="0.6" opacity="0.85"/>`;
+    out += `<ellipse cx="${CX}" cy="${y}" rx="${seg.w/2}" ry="3.5" fill="#f4ede0" stroke="${c.stroke}" stroke-width="0.4" opacity="0.8"/>`;
+    out += spinousProcess(CX, y, seg.w, seg.h, 'n');
+    out += `<text x="${CX - seg.w/2 - 3}" y="${y + seg.h/2 + 3.5}" text-anchor="end" font-size="8" fill="${c.text}" font-family="sans-serif" font-weight="500">${seg.name}</text>`;
+    if (i < SEGS_DEF.length - 1) {
+      out += `<rect x="${CX - seg.w/2 + 4}" y="${y + seg.h}" width="${seg.w - 8}" height="${DISC_H}" rx="2" fill="url(#ds-n)" opacity="0.85"/>`;
+    }
+    y += seg.h + DISC_H;
   });
-  out = renderSpineGroupLabels(out, 'left');
-  out += `<text x="${cx}" y="375" text-anchor="middle" font-size="8.5" fill="var(--color-text-tertiary)" font-family="var(--font-sans)">正常排列</text>`;
+
+  // 骨盆（正常）
+  out += drawPelvis(CX, y + 20, 0, 'normal', false);
+  out += `<text x="${CX}" y="${y + 90}" text-anchor="middle" font-size="9" fill="#888780" font-family="sans-serif">正常排列</text>`;
   svg.innerHTML = out;
 }
 
-function getSegDisplace(r, years, affectedMap, ageFactor, workMult) {
-  if (!affectedMap[r]) return 0;
-  const base = affectedMap[r] * ageFactor * workMult;
-  const tm = years===0?0.12:years===1?0.25:years===2?0.40:years===5?0.60:years===10?0.80:1.0;
-  return Math.min(14, base * tm);
-}
-
-function renderCurrentSpine(years) {
-  const { affectedMap, ageFactor, workMult } = analysisData;
-  const svg = document.getElementById('svgCurrent');
+/* ---- 使用者脊椎（含骨盆傾斜） ---- */
+function drawUserSpine(years) {
+  if (!analysisData) return;
+  const { affectedMap, ageFactor, workMult, pelvicType, pelvicSeverity } = analysisData;
+  const svg = document.getElementById('svgUser');
   let out = '';
-  let totalDisp = 0, count = 0;
-  const warnSegs = []; // 收集需要標示警示的節段
+  out += spineDefs('u');
 
-  spineSegs.forEach((r, i) => {
-    const y = startY + i * (segH + gap);
-    const c = getGroupColor(r);
-    const disp  = getSegDisplace(r, years, affectedMap, ageFactor, workMult);
-    const dispX = disp > 0 ? (i%2===0 ? disp*0.7 : -disp*0.5) : 0;
-    const dispY = disp > 0 ? disp*0.18 : 0;
-    const w = segW * (disp > 0 ? Math.max(0.6, 1-disp*0.025) : 1);
-    const h = disp > 0 ? Math.max(6, segH-disp*0.25) : segH;
-    const fill = disp > 8 ? '#E24B4A' : disp > 4 ? c.stroke : c.fill;
-    const op = disp > 0 ? 0.92 : 0.55;
-    const tc = disp > 4 ? '#fff' : c.text;
-    out += `<rect x="${cx-w/2+dispX}" y="${y+dispY}" width="${w}" height="${h}" rx="3" fill="${fill}" opacity="${op}"/>`;
-    out += `<text x="${cx+dispX}" y="${y+dispY+h/2+3.5}" text-anchor="middle" font-size="7" fill="${tc}" font-family="var(--font-sans)">${r}</text>`;
-    if (disp > 6) {
-      const n = Math.floor(disp/4);
-      for(let k=0;k<n;k++) {
-        const lx = cx-w/2+dispX+6+k*10;
-        out += `<line x1="${lx}" y1="${y+dispY}" x2="${lx+5}" y2="${y+dispY+h}" stroke="#fff" stroke-width="0.7" opacity="0.45"/>`;
+  // 時間加乘的骨盆傾斜程度
+  const timeFactor = Math.min(1, 0.15 + years * 0.0085);
+  const pelvisTilt = pelvicSeverity * timeFactor;
+
+  // 脊髓管
+  out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.2"/>`;
+
+  let y = 10;
+  let totalDisp = 0, count = 0;
+  const warnSegs = [];
+
+  SEGS_DEF.forEach((seg, i) => {
+    const c = getGroupColor(seg.name);
+    const disp = getSegDisplace(seg.name, years);
+
+    // 根據骨盆類型計算各段偏移
+    let dx = 0;
+    if (disp > 0) {
+      const isL = seg.name.startsWith('L');
+      const isT = seg.name.startsWith('T');
+      const isC = seg.name.startsWith('C');
+      const lNum = isL ? parseInt(seg.name[1]) : 0;
+      const tNum = isT ? parseInt(seg.name.substring(1)) : 0;
+
+      if (pelvicType === 'sit') {
+        if (isL) dx = disp * (lNum <= 2 ? -0.4 : -0.7);
+        else if (isT) dx = disp * (tNum > 6 ? 0.35 : 0.18);
+        else if (isC) dx = disp * 0.5;
+      } else {
+        if (isL) dx = disp * (lNum <= 3 ? -0.5 : -0.3);
+        else if (isT) dx = disp * (tNum > 6 ? 0.4 : 0.2);
+        else if (isC) dx = disp * 0.3;
       }
     }
-    if (i < spineSegs.length-1) {
-      const d2 = getSegDisplace(spineSegs[i+1], years, affectedMap, ageFactor, workMult);
-      const avg = (disp+d2)/2;
-      const dc = avg>6?'#E24B4A':avg>3?'#BA7517':'#D3D1C7';
-      const dw = (segW-20)*Math.max(0.5,1-avg*0.03);
-      const dox = avg>0?(i%2===0?avg*0.4:-avg*0.3):0;
-      out += `<rect x="${cx-dw/2+dox}" y="${y+segH}" width="${dw}" height="${gap}" rx="1" fill="${dc}" opacity="0.75"/>`;
+
+    const adjW = seg.w * Math.max(0.65, 1 - disp * 0.018);
+    const adjH = Math.max(6, seg.h - disp * 0.2);
+    const bx = CX + dx - adjW / 2;
+    const warnCol = disp > 8 ? '#A32D2D' : disp > 4 ? '#BA7517' : c.stroke;
+    const fillCol = disp > 8 ? '#F09595' : disp > 4 ? '#FAC775' : c.fill;
+    const sw = disp > 4 ? 1.2 : 0.6;
+
+    out += `<rect x="${bx}" y="${y}" width="${adjW}" height="${adjH}" rx="3" fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="0.9"/>`;
+    out += `<ellipse cx="${CX+dx}" cy="${y}" rx="${adjW/2}" ry="3.5" fill="#f4ede0" stroke="${warnCol}" stroke-width="0.4" opacity="0.8"/>`;
+    out += spinousProcess(CX + dx, y, adjW, adjH, 'u');
+    out += `<text x="${CX+dx - adjW/2 - 3}" y="${y + adjH/2 + 3.5}" text-anchor="end" font-size="8" fill="${c.text}" font-family="sans-serif" font-weight="500">${seg.name}</text>`;
+
+    // 椎間盤（受壓變色）
+    if (i < SEGS_DEF.length - 1) {
+      const nextDisp = getSegDisplace(SEGS_DEF[i+1].name, years);
+      const avgD = (disp + nextDisp) / 2;
+      const discCol = avgD > 6 ? '#E24B4A' : avgD > 3 ? '#BA7517' : null;
+      const dx2 = (dx + (pelvicType === 'sit' ? (SEGS_DEF[i+1].name.startsWith('L') ? -0.35 : 0.2) : 0.1) * nextDisp) / 2;
+      if (discCol) {
+        out += `<rect x="${CX+dx2 - adjW/2+4}" y="${y+adjH}" width="${adjW-8}" height="${DISC_H}" rx="2" fill="${discCol}" opacity="0.7"/>`;
+      } else {
+        out += `<rect x="${CX+dx2 - adjW/2+4}" y="${y+adjH}" width="${adjW-8}" height="${DISC_H}" rx="2" fill="url(#ds-u)" opacity="0.8"/>`;
+      }
     }
-    if (disp > 0) { totalDisp += disp; count++; }
 
-    // 標記需要特別注意的區段（錯位程度高）
-    if (disp > 5) {
-      warnSegs.push({ r, y: y + dispY + h/2, disp, dispX });
-    }
-  });
-
-  // 右側畫區域標示
-  out = renderSpineGroupLabels(out, 'left');
-
-  // 右側畫警示標記
-  warnSegs.forEach(({ r, y, disp, dispX }) => {
-    const rx = cx + segW/2 + dispX + 8;
-    const warnColor = disp > 9 ? '#A32D2D' : '#BA7517';
-    const warnLabel = disp > 9 ? '！！' : '！';
     // 警示圓點
-    out += `<circle cx="${rx + 6}" cy="${y}" r="7" fill="${warnColor}" opacity="0.15"/>`;
-    out += `<text x="${rx + 6}" y="${y + 3.5}" text-anchor="middle" font-size="8" fill="${warnColor}" font-weight="700" font-family="var(--font-sans)">${warnLabel}</text>`;
-    // 連線
-    out += `<line x1="${cx + segW/2 + dispX + 2}" y1="${y}" x2="${rx - 1}" y2="${y}" stroke="${warnColor}" stroke-width="0.8" stroke-dasharray="2,1" opacity="0.5"/>`;
+    if (disp > 5) {
+      const wx = CX + dx + adjW/2 + 8;
+      const wc = disp > 9 ? '#A32D2D' : '#BA7517';
+      out += `<circle cx="${wx}" cy="${y+adjH/2}" r="6" fill="${wc}" opacity="0.85"/>`;
+      out += `<text x="${wx}" y="${y+adjH/2+3.5}" text-anchor="middle" font-size="6" fill="#fff" font-weight="700" font-family="sans-serif">${disp>9?'!!':'!'}</text>`;
+      warnSegs.push({ r: seg.name, wx, wy: y + adjH/2, disp });
+    }
+
+    if (disp > 0) { totalDisp += disp; count++; }
+    y += seg.h + DISC_H;
   });
 
-  // 右側警示圖例
+  // 骨盆（含傾斜動態）
+  out += drawPelvis(CX, y + 20, pelvisTilt, pelvicType, true);
+  out += `<text x="${CX}" y="${y + 90}" text-anchor="middle" font-size="9" fill="#888780" font-family="sans-serif">${years===0?'目前狀態':years+'年後預測'}</text>`;
+
+  // 警示圖例
   if (warnSegs.length > 0) {
-    out += `<text x="${cx + segW/2 + 22}" y="358" text-anchor="middle" font-size="7" fill="#BA7517" font-family="var(--font-sans)">！需注意</text>`;
-    out += `<text x="${cx + segW/2 + 22}" y="367" text-anchor="middle" font-size="7" fill="#A32D2D" font-family="var(--font-sans)">！！嚴重</text>`;
+    out += `<text x="${CX + 50}" y="340" text-anchor="start" font-size="7.5" fill="#BA7517" font-family="sans-serif">! 需注意</text>`;
+    out += `<text x="${CX + 50}" y="350" text-anchor="start" font-size="7.5" fill="#A32D2D" font-family="sans-serif">!! 嚴重</text>`;
   }
 
-  out += `<text x="${cx}" y="385" text-anchor="middle" font-size="8.5" fill="var(--color-text-tertiary)" font-family="var(--font-sans)">${years===0?'目前狀態':years+'年後預測'}</text>`;
   svg.innerHTML = out;
 
-  const avgIdx = count > 0 ? totalDisp/count : 0;
-  const oi = Math.min(10, avgIdx*0.72);
-  const level = oi<2?'low':oi<4.5?'mid':oi<7?'high':'severe';
-  const lt = {low:'輕微錯位',mid:'中度錯位',high:'重度錯位',severe:'嚴重錯位'}[level];
-  const segs = Math.ceil(oi/2.5);
+  // 更新錯位指數
+  const avgIdx = count > 0 ? totalDisp / count : 0;
+  const oi = Math.min(10, avgIdx * 0.72);
+  const lvl = oi < 2 ? 'low' : oi < 4.5 ? 'mid' : oi < 7 ? 'high' : 'severe';
+  const lt = { low:'輕微錯位', mid:'中度錯位', high:'重度錯位', severe:'嚴重錯位' }[lvl];
   const cols = ['#C0DD97','#FAC775','#F09595','#E24B4A'];
+  const segs = Math.ceil(oi / 2.5);
   let bars = '';
-  for(let i=0;i<4;i++) bars += `<div class="sev-seg" style="background:${i<segs?cols[i]:'var(--color-border-tertiary)'};"></div>`;
+  for (let i = 0; i < 4; i++) bars += `<div class="sev-seg" style="background:${i<segs?cols[i]:'var(--color-border-tertiary)'};"></div>`;
   document.getElementById('indexInfo').innerHTML =
-    `<span class="risk-badge risk-${level}">${lt}</span><div class="severity-bar">${bars}</div><div style="font-size:13px;color:var(--color-text-tertiary);">錯位指數 ${oi.toFixed(1)} / 10（${years===0?'目前':''+years+'年後'}）</div>`;
+    `<span class="risk-badge risk-${lvl}">${lt}</span>
+     <div class="severity-bar">${bars}</div>
+     <div style="font-size:12px;color:var(--color-text-tertiary);">錯位指數 ${oi.toFixed(1)} / 10（${years===0?'目前':years+'年後'}）</div>`;
+
+  // 骨盆狀態說明
+  const ptLabel = pelvicType === 'sit' ? '骨盆後傾（久坐型）' : '骨盆側傾（重心偏移型）';
+  const ptDeg = pelvicType === 'sit' ? Math.round(pelvisTilt * 18) : Math.round(pelvisTilt * 14);
+  const ptCol = ptDeg < 5 ? '#27500A' : ptDeg < 10 ? '#854F0B' : '#791F1F';
+  document.getElementById('pelvisInfo').innerHTML =
+    `<span style="color:${ptCol};font-weight:500;">地基：${ptLabel}</span>　傾斜約 ${ptDeg}°`;
 }
 
+function spineDefs(id) {
+  return `<defs>
+    <linearGradient id="vb-${id}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ddd0c0"/><stop offset="35%" stop-color="#f0e4d0"/>
+      <stop offset="70%" stop-color="#d0c4b0"/><stop offset="100%" stop-color="#b0a090"/>
+    </linearGradient>
+    <linearGradient id="ds-${id}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7090a8"/><stop offset="45%" stop-color="#c0daf0"/><stop offset="100%" stop-color="#7090a8"/>
+    </linearGradient>
+  </defs>`;
+}
+
+function spinousProcess(cx, y, w, h, id) {
+  const spLen = w > 50 ? 14 : w > 42 ? 11 : 8;
+  return `<path d="M${cx+w/2},${y+h*0.35} Q${cx+w/2+spLen*0.55},${y+h*0.48} ${cx+w/2+spLen},${y+h*0.55} Q${cx+w/2+spLen*0.55},${y+h*0.68} ${cx+w/2},${y+h*0.72}Z"
+    fill="#c8b8a0" stroke="#9a8870" stroke-width="0.4"/>`;
+}
+
+/* ===================== 症狀 & 進度條 ===================== */
 function renderSymptoms(years) {
-  const { affectedMap, ageFactor, workMult } = analysisData;
   const content = document.getElementById('symptomContent');
+  if (!analysisData) return;
   const grouped = {};
-  Object.keys(affectedMap).forEach(r => {
-    const disp = getSegDisplace(r, years, affectedMap, ageFactor, workMult);
+  Object.keys(analysisData.affectedMap).forEach(r => {
+    const disp = getSegDisplace(r, years);
     if (disp < 0.5) return;
     const g = r.startsWith('C')?'頸椎區':r.startsWith('T')?'胸椎區':r.startsWith('L')?'腰椎區':'薦椎區';
     if (!grouped[g]) grouped[g] = { regions:[], syms: new Set() };
     grouped[g].regions.push(r);
     if (regionSymptoms[r]) regionSymptoms[r].forEach(s => grouped[g].syms.add(s));
   });
-  const dc = years<2?'dot-info':years<10?'dot-warn':'dot-danger';
+  const dc = years < 2 ? 'dot-info' : years < 10 ? 'dot-warn' : 'dot-danger';
   let html = '';
   Object.entries(grouped).forEach(([g, data]) => {
-    const ms = years===0?2:years<=2?3:years<=5?4:5;
+    const ms = years === 0 ? 2 : years <= 5 ? 3 : years <= 20 ? 4 : 5;
     html += `<div style="margin-bottom:0.75rem;"><div style="font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:3px;">${g}（${data.regions.join('、')}）</div><ul class="symptom-list">`;
-    [...data.syms].slice(0,ms).forEach(s => { html += `<li><span class="dot ${dc}"></span>${s}</li>`; });
+    [...data.syms].slice(0, ms).forEach(s => { html += `<li><span class="dot ${dc}"></span>${s}</li>`; });
     html += `</ul></div>`;
   });
   if (!html) html = '<div style="font-size:14px;color:var(--color-text-tertiary);padding:0.5rem 0;">目前錯位程度輕微，維持良好習慣即可</div>';
@@ -700,86 +752,84 @@ function renderSymptoms(years) {
 }
 
 function renderSegmentBars(years) {
-  const { affectedMap, ageFactor, workMult } = analysisData;
   const el = document.getElementById('segmentBars');
-  const affected = Object.keys(affectedMap).filter(r => affectedMap[r] > 0);
+  if (!analysisData) return;
+  const affected = Object.keys(analysisData.affectedMap).filter(r => analysisData.affectedMap[r] > 0);
   let html = '';
   affected.forEach(r => {
-    const disp = getSegDisplace(r, years, affectedMap, ageFactor, workMult);
-    const pct = Math.min(100, disp*7.5);
-    const color = pct<30?'#185FA5':pct<60?'#BA7517':'#A32D2D';
+    const disp = getSegDisplace(r, years);
+    const pct = Math.min(100, disp * 7.5);
+    const color = pct < 30 ? '#185FA5' : pct < 60 ? '#BA7517' : '#A32D2D';
     const c = getGroupColor(r);
     html += `<div style="margin-bottom:10px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-        <span style="font-size:14px;font-weight:500;color:${c.text};">${r}</span>
-        <span style="font-size:13px;color:var(--color-text-tertiary);">${disp.toFixed(1)}</span>
+        <span style="font-size:13px;font-weight:500;color:${c.text};">${r}</span>
+        <span style="font-size:12px;color:var(--color-text-tertiary);">${disp.toFixed(1)}</span>
       </div>
       <div style="height:6px;background:var(--color-border-tertiary);border-radius:3px;overflow:hidden;">
-        <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;transition:width 0.4s;"></div>
+        <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;transition:width 0.3s;"></div>
       </div></div>`;
   });
-  if (!html) html = '<div style="font-size:14px;color:var(--color-text-tertiary);">尚無錯位數據</div>';
+  if (!html) html = '<div style="font-size:13px;color:var(--color-text-tertiary);">尚無錯位數據</div>';
   el.innerHTML = html;
 }
 
-function bookConsult() {
-  const { name, phone, line, email } = analysisData || {};
-  alert(`感謝 ${name||'您'} 的查詢！\n電話：${phone||'—'}\nLine：${line||'—'}\nEmail：${email||'—'}\n\n我們將盡快與您聯繫安排免費諮詢。`);
+function updateDegenDesc(years) {
+  const el = document.getElementById('degenDesc');
+  let msg = '', icon = '⚠️';
+  if (years === 0) {
+    msg = '關節壓力累積，局部緊繃明顯。長期姿勢不良導致脊椎各節段承受不均勻的壓力，若未及時矯正，將加速椎間盤退化與神經壓迫風險。';
+  } else if (years <= 5) {
+    msg = `${years}年後：椎間盤開始脫水變薄，高度輕度下降。骨盆傾斜加劇代償，腰椎承受壓力持續增加，建議此階段積極介入矯正。`;
+  } else if (years <= 20) {
+    msg = `${years}年後：椎間盤明顯退化，骨刺開始形成，神經壓迫風險上升。骨盆偏移固化，周邊肌群失衡加重。坐骨神經痛、頸椎病症可能出現。`;
+    icon = '🔴';
+  } else if (years <= 50) {
+    msg = `${years}年後：結構性退化期。椎間孔狹窄、神經受壓症狀明顯，可能伴隨步態改變、平衡障礙。骨盆側傾可能造成長短腳，髖關節磨損加劇。`;
+    icon = '🔴';
+  } else {
+    msg = `${years}年後：嚴重退化性脊椎病變。脊椎側彎固化、多節段骨刺壓迫神經根，日常活動受限。此為長期未矯正的終末期表現，早期干預至關重要。`;
+    icon = '🔴';
+  }
+  el.innerHTML = `<div style="font-size:22px;flex-shrink:0;">${icon}</div><div style="font-size:14px;color:#633806;line-height:1.7;">${msg}</div>`;
 }
 
+/* ===================== 下載報告 ===================== */
 async function downloadReport() {
   const btn = document.getElementById('downloadBtn');
   const original = btn.innerHTML;
   btn.innerHTML = '⏳ 產生圖片中...';
   btn.disabled = true;
-
   try {
     const target = document.getElementById('resultSection');
-    const canvas = await html2canvas(target, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#ffffff',
-      scrollY: -window.scrollY,
-      windowWidth: document.documentElement.scrollWidth,
-    });
-
-    // 加上品牌標題
+    const canvas = await html2canvas(target, { scale:2, useCORS:true, backgroundColor:'#ffffff', scrollY:-window.scrollY, windowWidth:document.documentElement.scrollWidth });
     const branded = document.createElement('canvas');
-    const headerH = 60;
+    const hH = 60;
     branded.width = canvas.width;
-    branded.height = canvas.height + headerH * 2;
+    branded.height = canvas.height + hH * 2;
     const ctx = branded.getContext('2d');
-
-    // 白底
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, branded.width, branded.height);
-
-    // 頂部品牌條
     ctx.fillStyle = '#185FA5';
-    ctx.fillRect(0, 0, branded.width, headerH * 2);
+    ctx.fillRect(0, 0, branded.width, hH * 2);
     ctx.fillStyle = '#ffffff';
-    ctx.font = `bold ${headerH * 0.55}px sans-serif`;
+    ctx.font = `bold ${hH*0.55}px sans-serif`;
     ctx.textAlign = 'center';
-    ctx.fillText('逸豐整復　脊椎健康評估報告', branded.width / 2, headerH * 1.1);
-    ctx.font = `${headerH * 0.35}px sans-serif`;
+    ctx.fillText('逸豐整復　脊椎健康評估報告', branded.width/2, hH*1.1);
+    ctx.font = `${hH*0.35}px sans-serif`;
     ctx.fillStyle = '#B5D4F4';
     const now = new Date();
-    ctx.fillText(`報告日期：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}`, branded.width / 2, headerH * 1.65);
-
-    // 貼上截圖
-    ctx.drawImage(canvas, 0, headerH * 2);
-
-    // 下載
+    ctx.fillText(`報告日期：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}`, branded.width/2, hH*1.65);
+    ctx.drawImage(canvas, 0, hH*2);
     const link = document.createElement('a');
-    const dateStr = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
-    link.download = `脊椎健康評估報告_${dateStr}.png`;
+    const ds = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+    link.download = `脊椎健康評估報告_${ds}.png`;
     link.href = branded.toDataURL('image/png');
     link.click();
   } catch(e) {
     alert('圖片產生失敗，請嘗試截圖方式儲存。');
     console.error(e);
   }
-
   btn.innerHTML = original;
   btn.disabled = false;
 }
