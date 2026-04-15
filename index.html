@@ -131,7 +131,12 @@
 
     <div class="section-label">脊椎分析設定</div>
     <div class="form-row" style="margin-bottom: 1rem;">
-      <div class="field"><label>年齡</label><input type="number" id="userAge" min="10" max="90" placeholder="請輸入年齡"></div>
+      <div class="field"><label>年齡</label>
+        <select id="userAge">
+          <option value="">請選擇年齡</option>
+          <option value="1">1 歲</option><option value="2">2 歲</option><option value="3">3 歲</option><option value="4">4 歲</option><option value="5">5 歲</option><option value="6">6 歲</option><option value="7">7 歲</option><option value="8">8 歲</option><option value="9">9 歲</option><option value="10">10 歲</option><option value="11">11 歲</option><option value="12">12 歲</option><option value="13">13 歲</option><option value="14">14 歲</option><option value="15">15 歲</option><option value="16">16 歲</option><option value="17">17 歲</option><option value="18">18 歲</option><option value="19">19 歲</option><option value="20">20 歲</option><option value="21">21 歲</option><option value="22">22 歲</option><option value="23">23 歲</option><option value="24">24 歲</option><option value="25">25 歲</option><option value="26">26 歲</option><option value="27">27 歲</option><option value="28">28 歲</option><option value="29">29 歲</option><option value="30">30 歲</option><option value="31">31 歲</option><option value="32">32 歲</option><option value="33">33 歲</option><option value="34">34 歲</option><option value="35">35 歲</option><option value="36">36 歲</option><option value="37">37 歲</option><option value="38">38 歲</option><option value="39">39 歲</option><option value="40">40 歲</option><option value="41">41 歲</option><option value="42">42 歲</option><option value="43">43 歲</option><option value="44">44 歲</option><option value="45">45 歲</option><option value="46">46 歲</option><option value="47">47 歲</option><option value="48">48 歲</option><option value="49">49 歲</option><option value="50">50 歲</option><option value="51">51 歲</option><option value="52">52 歲</option><option value="53">53 歲</option><option value="54">54 歲</option><option value="55">55 歲</option><option value="56">56 歲</option><option value="57">57 歲</option><option value="58">58 歲</option><option value="59">59 歲</option><option value="60">60 歲</option><option value="61">61 歲</option><option value="62">62 歲</option><option value="63">63 歲</option><option value="64">64 歲</option><option value="65">65 歲</option><option value="66">66 歲</option><option value="67">67 歲</option><option value="68">68 歲</option><option value="69">69 歲</option><option value="70">70 歲</option><option value="71">71 歲</option><option value="72">72 歲</option><option value="73">73 歲</option><option value="74">74 歲</option><option value="75">75 歲</option><option value="76">76 歲</option><option value="77">77 歲</option><option value="78">78 歲</option><option value="79">79 歲</option><option value="80">80 歲</option><option value="81">81 歲</option><option value="82">82 歲</option><option value="83">83 歲</option><option value="84">84 歲</option><option value="85">85 歲</option><option value="86">86 歲</option><option value="87">87 歲</option><option value="88">88 歲</option><option value="89">89 歲</option><option value="90">90 歲</option><option value="91">91 歲</option><option value="92">92 歲</option><option value="93">93 歲</option><option value="94">94 歲</option><option value="95">95 歲</option><option value="96">96 歲</option><option value="97">97 歲</option><option value="98">98 歲</option><option value="99">99 歲</option><option value="100">100 歲</option>
+        </select>
+      </div>
       <div class="field"><label>工作型態</label>
         <select id="workType">
           <option value="">請選擇</option>
@@ -144,20 +149,12 @@
       </div>
     </div>
 
-    <div class="section-label">慣用錯誤姿勢</div>
-    <div class="selected-slots" id="selectedSlots">
-      <div class="slot-box" id="slotBox0"><div class="slot-num">姿勢 1</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div></div>
-      <div class="slot-box" id="slotBox1"><div class="slot-num">姿勢 2</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div></div>
-      <div class="slot-box" id="slotBox2"><div class="slot-num">姿勢 3</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div></div>
-    </div>
-    <div class="slot-strip">
-      <button class="slot-pill sp1" id="pill0" onclick="setActiveSlot(0)">選擇姿勢 1</button>
-      <button class="slot-pill inactive" id="pill1" onclick="setActiveSlot(1)">選擇姿勢 2</button>
-      <button class="slot-pill inactive" id="pill2" onclick="setActiveSlot(2)">選擇姿勢 3</button>
-    </div>
-    <div class="active-hint" id="activeHint">請從下方點選「姿勢 1」的選項</div>
+    <div class="section-label">慣用錯誤姿勢 <span style="font-size:11px;color:var(--color-text-tertiary);text-transform:none;letter-spacing:0;">（點一下即時查看 · 可多選）</span></div>
+    <div id="selectedChips" style="display:flex;flex-wrap:wrap;gap:6px;min-height:36px;margin-bottom:10px;align-items:center;"></div>
     <div class="posture-grid" id="postureGrid"></div>
-    <button class="submit-btn" onclick="runAnalysis()">身為三寶爸，我懂您為家打拼的辛苦，讓我幫您看看脊椎狀況 →</button>
+    <div style="margin-top:8px;font-size:12px;color:var(--color-text-tertiary);line-height:1.6;">
+      ▶ 圖中右側三角形 = 棘突（脊椎後方骨性突起，頸後可摸到的硬骨）
+    </div>
   </div>
 
   <div class="result-section" id="resultSection">
@@ -329,8 +326,7 @@ const hintTexts = [
   '請從下方點選「姿勢 3」的選項（可選「無」）',
 ];
 
-let selectedPostures = [null, null, null];
-let activeSlot = 0;
+let selectedPostureSet = new Set(); // ids of selected postures
 let analysisData = null;
 let currentYears = 0;
 
@@ -341,74 +337,69 @@ function buildGrid() {
   postureOptions.forEach(p => {
     const btn = document.createElement('button');
     btn.className = 'posture-btn';
-    btn.dataset.id = p.id;
-    btn.innerHTML = `<span class="slot-indicators" id="ind_${p.id}"></span><span class="posture-icon">${p.icon}</span>${p.label}`;
-    btn.onclick = () => pickPosture(p.id, p.icon, p.label);
+    btn.id = 'pbtn_' + p.id;
+    btn.innerHTML = `<span class="posture-icon">${p.icon}</span>${p.label}`;
+    btn.onclick = () => togglePosture(p.id);
     grid.appendChild(btn);
   });
-  const none = document.createElement('button');
-  none.className = 'posture-btn';
-  none.dataset.id = 'none';
-  none.innerHTML = `<span class="slot-indicators" id="ind_none"></span><span class="posture-icon">—</span>無`;
-  none.onclick = () => pickPosture('none', '—', '無');
-  grid.appendChild(none);
-  refreshIndicators();
 }
 
-function pickPosture(id, icon, label) {
-  selectedPostures[activeSlot] = { id, icon, label };
-  updateSlotBox(activeSlot);
-  refreshIndicators();
-  if (activeSlot < 2) setActiveSlot(activeSlot + 1);
+function togglePosture(id) {
+  if (selectedPostureSet.has(id)) {
+    selectedPostureSet.delete(id);
+  } else {
+    selectedPostureSet.add(id);
+  }
+  refreshPostureUI();
+  triggerAnalysis();
 }
 
-function setActiveSlot(slot) {
-  activeSlot = slot;
-  document.getElementById('activeHint').textContent = hintTexts[slot];
-  [0,1,2].forEach(i => {
-    const pill = document.getElementById(`pill${i}`);
-    const sc = slotColors[i];
-    pill.className = 'slot-pill ' + (i === slot ? sc.pill : 'inactive');
+function refreshPostureUI() {
+  // update button states
+  postureOptions.forEach(p => {
+    const btn = document.getElementById('pbtn_' + p.id);
+    if (!btn) return;
+    if (selectedPostureSet.has(p.id)) {
+      btn.style.background = '#E6F1FB';
+      btn.style.borderColor = '#185FA5';
+      btn.style.color = '#0C447C';
+      btn.style.borderWidth = '2px';
+    } else {
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      btn.style.borderWidth = '';
+    }
   });
-}
-
-function updateSlotBox(slot) {
-  const box = document.getElementById(`slotBox${slot}`);
-  const p = selectedPostures[slot];
-  const sc = slotColors[slot];
-  if (!p) {
-    box.style.border = ''; box.style.background = '';
-    box.innerHTML = `<div class="slot-num">姿勢 ${slot+1}</div><div class="slot-val"><span class="slot-empty-hint">尚未選擇</span></div>`;
+  // update chips
+  const chips = document.getElementById('selectedChips');
+  if (selectedPostureSet.size === 0) {
+    chips.innerHTML = '<span style="font-size:12px;color:var(--color-text-tertiary);font-style:italic;">尚未選擇姿勢</span>';
     return;
   }
-  const isNone = p.id === 'none';
-  box.style.border = `1.5px solid ${isNone ? '#3B6D11' : sc.border}`;
-  box.style.background = isNone ? '#EAF3DE' : sc.bg;
-  const col = isNone ? '#3B6D11' : sc.text;
-  box.innerHTML = `<div class="slot-num" style="color:${col};">姿勢 ${slot+1}</div>
-    <div class="slot-val" style="color:${col};"><span class="slot-icon">${p.icon}</span>${p.label}</div>`;
-}
-
-function refreshIndicators() {
-  document.querySelectorAll('[id^="ind_"]').forEach(el => el.innerHTML = '');
-  selectedPostures.forEach((p, i) => {
-    if (!p || p.id === 'none') return;
-    const el = document.getElementById(`ind_${p.id}`);
-    if (el) el.innerHTML += `<span class="slot-dot ${slotColors[i].dot}">${i+1}</span>`;
+  let html = '';
+  selectedPostureSet.forEach(id => {
+    const p = postureOptions.find(o => o.id === id);
+    if (!p) return;
+    html += `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:#E6F1FB;border:1.5px solid #185FA5;border-radius:999px;font-size:12px;color:#0C447C;cursor:pointer;" onclick="togglePosture('${id}')">${p.icon} ${p.label} ✕</span>`;
   });
+  chips.innerHTML = html;
 }
 
 /* ===================== 分析主流程 ===================== */
-function runAnalysis() {
+function triggerAnalysis() {
   const age  = parseInt(document.getElementById('userAge').value);
-  const work = document.getElementById('workType').value;
-  if (!age || age < 10 || age > 90) { alert('請輸入正確年齡（10-90）'); return; }
-  if (!selectedPostures[0]) { alert('請選擇姿勢 1'); return; }
-  if (!selectedPostures[1]) { alert('請選擇姿勢 2'); return; }
-  if (!selectedPostures[2]) { alert('請選擇姿勢 3（或選「無」）'); return; }
-  if (!work) { alert('請選擇工作型態'); return; }
+  const work = document.getElementById('workType').value || 'mixed';
+  if (!age || selectedPostureSet.size === 0) return; // 靜默等待
+  runAnalysis(age, work);
+}
 
-  const activePosIds = selectedPostures.filter(p => p && p.id !== 'none').map(p => p.id);
+function runAnalysis(age, work) {
+  if (!age) age = parseInt(document.getElementById('userAge').value);
+  if (!work) work = document.getElementById('workType').value || 'mixed';
+  if (!age || selectedPostureSet.size === 0) return;
+
+  const activePosIds = [...selectedPostureSet];
   let affectedMap = {};
   activePosIds.forEach(pid => {
     if (postureEffects[pid]) {
@@ -433,7 +424,10 @@ function runAnalysis() {
 
   analysisData = { age, work, activePosIds, affectedMap, ageFactor, workMult, pelvicType, pelvicSeverity };
 
-  const postureDesc = selectedPostures.map((p,i) => p ? `${['①','②','③'][i]}${p.label}` : '').filter(Boolean).join('、');
+  const postureDesc = activePosIds.map((id,i) => {
+    const p = postureOptions.find(o => o.id === id);
+    return p ? `${['①','②','③','④','⑤','⑥'][i]||'·'}${p.label}` : '';
+  }).filter(Boolean).join('、');
   document.getElementById('alertMsg').textContent =
     `根據您的年齡（${age}歲）及姿勢習慣（${postureDesc}），以下為您的脊椎錯位預測。拖動時間軸查看退化進程。`;
 
@@ -452,10 +446,11 @@ function runAnalysis() {
   spineSegs.forEach(r => { const d = getSegDisplace(r, 0); if(d>0){totalDisp+=d;cnt++;} });
   const oi = Math.min(10, (cnt>0?totalDisp/cnt:0) * 0.72);
   const level = oi<2?'輕微錯位':oi<4.5?'中度錯位':oi<7?'重度錯位':'嚴重錯位';
+  const pLabels = activePosIds.map(id => postureOptions.find(o=>o.id===id)?.label||'—');
   submitToSheet({ age, work:workLabel,
-    posture1: selectedPostures[0]?.label||'—',
-    posture2: selectedPostures[1]?.label||'—',
-    posture3: selectedPostures[2]?.label||'—',
+    posture1: pLabels[0]||'—',
+    posture2: pLabels[1]||'—',
+    posture3: pLabels[2]||'—',
     affected: Object.keys(affectedMap).join('、'),
     riskIndex: oi.toFixed(1), riskLevel: level
   });
@@ -490,8 +485,10 @@ function getSegDisplace(r, years) {
   if (!analysisData || !analysisData.affectedMap[r]) return 0;
   const { affectedMap, ageFactor, workMult } = analysisData;
   const base = affectedMap[r] * ageFactor * workMult;
-  const tm = Math.min(1, 0.12 + years * 0.0088);
-  return Math.min(14, base * tm);
+  // 非線性加速：前期慢，中期加速，後期趨穩
+  const t = years / 100;
+  const tm = 0.10 + 0.90 * (1 - Math.exp(-3.5 * t));
+  return Math.min(18, base * tm * 1.6);
 }
 
 /* ===================== SVG 繪製常數 ===================== */
@@ -570,6 +567,8 @@ function drawNormalSpine() {
   const svg = document.getElementById('svgNormal');
   let out = '';
   out += spineDefs('n');
+  // 中心基準線
+  out += `<line x1="${CX}" y1="10" x2="${CX}" y2="500" stroke="#d0c8bc" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>`;
   // 脊髓管
   out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.2"/>`;
 
@@ -602,11 +601,14 @@ function drawUserSpine(years) {
   out += spineDefs('u');
 
   // 時間加乘的骨盆傾斜程度
-  const timeFactor = Math.min(1, 0.15 + years * 0.0085);
+  const t2 = years / 100;
+  const timeFactor = Math.min(1, 0.12 + 0.88 * (1 - Math.exp(-3.5 * t2)));
   const pelvisTilt = pelvicSeverity * timeFactor;
 
+  // 中心基準線（對照用）
+  out += `<line x1="${CX}" y1="10" x2="${CX}" y2="500" stroke="#d0c8bc" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.4"/>`;
   // 脊髓管
-  out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.2"/>`;
+  out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.15"/>`;
 
   let y = 10;
   let totalDisp = 0, count = 0;
@@ -626,33 +628,39 @@ function drawUserSpine(years) {
       const tNum = isT ? parseInt(seg.name.substring(1)) : 0;
 
       if (pelvicType === 'sit') {
-        if (isL) dx = disp * (lNum <= 2 ? -0.4 : -0.7);
-        else if (isT) dx = disp * (tNum > 6 ? 0.35 : 0.18);
-        else if (isC) dx = disp * 0.5;
+        if (isL) dx = disp * (lNum <= 2 ? -1.2 : -2.0);
+        else if (isT) dx = disp * (tNum > 6 ? 1.0 : 0.5);
+        else if (isC) dx = disp * 1.4;
       } else {
-        if (isL) dx = disp * (lNum <= 3 ? -0.5 : -0.3);
-        else if (isT) dx = disp * (tNum > 6 ? 0.4 : 0.2);
-        else if (isC) dx = disp * 0.3;
+        if (isL) dx = disp * (lNum <= 3 ? -1.5 : -0.9);
+        else if (isT) dx = disp * (tNum > 6 ? 1.2 : 0.6);
+        else if (isC) dx = disp * 0.8;
       }
     }
 
-    const adjW = seg.w * Math.max(0.65, 1 - disp * 0.018);
-    const adjH = Math.max(6, seg.h - disp * 0.2);
+    const compression = Math.min(0.45, disp * 0.035); // 椎體壓縮（變矮）
+    const adjW = seg.w * Math.max(0.7, 1 - disp * 0.008); // 寬度幾乎不變
+    const adjH = Math.max(5, seg.h * (1 - compression));  // 壓縮後變矮
     const bx = CX + dx - adjW / 2;
-    const warnCol = disp > 8 ? '#A32D2D' : disp > 4 ? '#BA7517' : c.stroke;
-    const fillCol = disp > 8 ? '#F09595' : disp > 4 ? '#FAC775' : c.fill;
-    const sw = disp > 4 ? 1.2 : 0.6;
+    const warnCol = disp > 10 ? '#791F1F' : disp > 6 ? '#A32D2D' : disp > 3 ? '#BA7517' : c.stroke;
+    const fillCol = disp > 10 ? '#E24B4A' : disp > 6 ? '#F09595' : disp > 3 ? '#FAC775' : c.fill;
+    const sw = disp > 6 ? 2.0 : disp > 3 ? 1.4 : 0.7;
+    const segOpacity = disp > 3 ? 1.0 : 0.85;
 
-    out += `<rect x="${bx}" y="${y}" width="${adjW}" height="${adjH}" rx="3" fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="0.9"/>`;
+    out += `<rect x="${bx}" y="${y}" width="${adjW}" height="${adjH}" rx="3" fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="${segOpacity}"/>`;
+    // 正常側（左側）也顯示淡色警示，讓兩側都有顏色變化
+    if (disp > 3) {
+      out += `<rect x="${CX - seg.w/2}" y="${y}" width="${seg.w}" height="${seg.h}" rx="3" fill="${fillCol}" stroke="${warnCol}" stroke-width="0.5" opacity="0.22"/>`;
+    }
     out += `<ellipse cx="${CX+dx}" cy="${y}" rx="${adjW/2}" ry="3.5" fill="#f4ede0" stroke="${warnCol}" stroke-width="0.4" opacity="0.8"/>`;
     out += spinousProcess(CX + dx, y, adjW, adjH, 'u');
-    out += `<text x="${CX+dx - adjW/2 - 3}" y="${y + adjH/2 + 3.5}" text-anchor="end" font-size="8" fill="${c.text}" font-family="sans-serif" font-weight="500">${seg.name}</text>`;
+    out += `<text x="${CX+dx - adjW/2 - 3}" y="${y + adjH/2 + 3.5}" text-anchor="end" font-size="8" fill="${warnCol}" font-family="sans-serif" font-weight="600">${seg.name}</text>`;
 
     // 椎間盤（受壓變色）
     if (i < SEGS_DEF.length - 1) {
       const nextDisp = getSegDisplace(SEGS_DEF[i+1].name, years);
       const avgD = (disp + nextDisp) / 2;
-      const discCol = avgD > 6 ? '#E24B4A' : avgD > 3 ? '#BA7517' : null;
+      const discCol = avgD > 8 ? '#791F1F' : avgD > 5 ? '#E24B4A' : avgD > 2 ? '#BA7517' : null;
       const dx2 = (dx + (pelvicType === 'sit' ? (SEGS_DEF[i+1].name.startsWith('L') ? -0.35 : 0.2) : 0.1) * nextDisp) / 2;
       if (discCol) {
         out += `<rect x="${CX+dx2 - adjW/2+4}" y="${y+adjH}" width="${adjW-8}" height="${DISC_H}" rx="2" fill="${discCol}" opacity="0.7"/>`;
@@ -662,9 +670,9 @@ function drawUserSpine(years) {
     }
 
     // 警示圓點
-    if (disp > 5) {
+    if (disp > 2.5) {
       const wx = CX + dx + adjW/2 + 8;
-      const wc = disp > 9 ? '#A32D2D' : '#BA7517';
+      const wc = disp > 9 ? '#791F1F' : disp > 6 ? '#A32D2D' : '#BA7517';
       out += `<circle cx="${wx}" cy="${y+adjH/2}" r="6" fill="${wc}" opacity="0.85"/>`;
       out += `<text x="${wx}" y="${y+adjH/2+3.5}" text-anchor="middle" font-size="6" fill="#fff" font-weight="700" font-family="sans-serif">${disp>9?'!!':'!'}</text>`;
       warnSegs.push({ r: seg.name, wx, wy: y + adjH/2, disp });
@@ -835,6 +843,9 @@ async function downloadReport() {
 }
 
 buildGrid();
+refreshPostureUI();
+document.getElementById('userAge').addEventListener('change', triggerAnalysis);
+document.getElementById('workType').addEventListener('change', triggerAnalysis);
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
