@@ -162,28 +162,42 @@
   <div class="result-section" id="resultSection">
     <div class="alert" id="alertMsg"></div>
 
-    <!-- 時間軸滑桿 -->
-    <div class="timeline-slider-wrap">
-      <div class="tl-top">
-        <span class="tl-label">退化時間軸</span>
-        <span class="tl-value" id="tlDisplay">目前狀態</span>
-      </div>
-      <input type="range" class="tl-slider" id="yearSlider" min="0" max="100" value="0" step="1" oninput="onYearSlide(this.value)">
-      <div class="tl-marks">
-        <span>現在</span><span>10年</span><span>20年</span><span>30年</span><span>40年</span><span>50年</span><span>60年</span><span>70年</span><span>80年</span><span>90年</span><span>100年</span>
-      </div>
-    </div>
+    <!-- 脊椎圖 + 時間軸：整合成一個畫面單元 -->
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:0.85rem;">
 
-    <!-- 單一脊椎圖（由正常到退化，隨時間軸變化） -->
-    <div class="compare-wrap">
-      <div class="spine-panel">
-        <div class="panel-head">
-          <span class="panel-badge badge-current" id="currentBadge">現在狀態</span>
-          <span class="panel-title" id="currentTitle">您的脊椎（後方視角）</span>
+      <!-- 標題列 -->
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:0.5px solid var(--color-border-tertiary);">
+        <span class="panel-badge badge-current" id="currentBadge" style="font-size:13px;padding:4px 12px;">現在狀態</span>
+        <span id="currentTitle" style="font-size:13px;font-weight:500;color:var(--color-text-primary);">您的脊椎（後方視角 · X光判讀邏輯）</span>
+      </div>
+
+      <!-- 脊椎SVG：縮放到一個畫面可見，使用calc高度 -->
+      <div style="padding:0 8px;">
+        <svg id="svgUser" viewBox="0 0 300 660" width="100%" style="display:block;margin:0 auto;max-height:calc(100dvh - 280px);"></svg>
+      </div>
+
+      <!-- 錯位指數 -->
+      <div class="index-info-bar" id="indexInfo" style="margin:0 12px 8px;"></div>
+      <div class="pelvis-info" id="pelvisInfo" style="padding-bottom:6px;"></div>
+
+      <!-- 時間軸滑桿（固定在脊椎圖下方，整合在同一卡片） -->
+      <div style="padding:10px 12px 12px;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <span style="font-size:12px;color:var(--color-text-secondary);">退化時間軸</span>
+          <span style="font-size:18px;font-weight:500;color:#185FA5;" id="tlDisplay">目前狀態</span>
         </div>
-        <svg id="svgUser" viewBox="0 0 220 720" width="100%" style="display:block;margin:0 auto;max-width:360px;"></svg>
-        <div class="index-info-bar" id="indexInfo"></div>
-        <div class="pelvis-info" id="pelvisInfo"></div>
+        <!-- 快速按鍵 -->
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;">
+          <button onclick="jumpYear(0)"  style="padding:4px 9px;border-radius:999px;font-size:12px;font-weight:500;border:1.5px solid #185FA5;background:#E6F1FB;color:#0C447C;cursor:pointer;">現在</button>
+          <button onclick="jumpYear(5)"  style="padding:4px 9px;border-radius:999px;font-size:12px;font-weight:500;border:1.5px solid #3B6D11;background:#EAF3DE;color:#27500A;cursor:pointer;">5年後</button>
+          <button onclick="jumpYear(10)" style="padding:4px 9px;border-radius:999px;font-size:12px;font-weight:500;border:1.5px solid #BA7517;background:#FAEEDA;color:#633806;cursor:pointer;">10年後</button>
+          <button onclick="jumpYear(15)" style="padding:4px 9px;border-radius:999px;font-size:12px;font-weight:500;border:1.5px solid #A32D2D;background:#FCEBEB;color:#791F1F;cursor:pointer;">15年後</button>
+          <button onclick="jumpYear(20)" style="padding:4px 9px;border-radius:999px;font-size:12px;font-weight:500;border:1.5px solid #791F1F;background:#F5C4B3;color:#4A1B0C;cursor:pointer;">20年後</button>
+        </div>
+        <input type="range" style="width:100%;accent-color:#185FA5;" id="yearSlider" min="0" max="100" value="0" step="1" oninput="onYearSlide(this.value)">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-tertiary);margin-top:2px;">
+          <span>現在</span><span>20年</span><span>40年</span><span>60年</span><span>80年</span><span>100年</span>
+        </div>
       </div>
     </div>
 
@@ -461,12 +475,17 @@ function submitToSheet(data) {
 }
 
 /* ===================== 時間軸滑桿 ===================== */
+function jumpYear(y) {
+  document.getElementById('yearSlider').value = y;
+  onYearSlide(y);
+}
+
 function onYearSlide(val) {
   currentYears = parseInt(val);
   const disp = currentYears === 0 ? '目前狀態' : `${currentYears} 年後`;
   document.getElementById('tlDisplay').textContent = disp;
   document.getElementById('currentBadge').textContent = currentYears === 0 ? '現在狀態' : `${currentYears} 年後`;
-  document.getElementById('currentTitle').textContent = currentYears === 0 ? '您的脊椎（目前）' : `您的脊椎（${currentYears}年後預測）`;
+  document.getElementById('currentTitle').textContent = currentYears === 0 ? '您的脊椎（目前）' : `您的脊椎（未來${currentYears}年後預測）`;
   if (analysisData) renderAll(currentYears);
 }
 
@@ -563,46 +582,49 @@ function drawPelvis(cx, topY, tiltT, pelvicType, isUser) {
 
 /* ---- 舊版 drawUserSpine 已由上方後方視角版本取代 ---- */
 
-/* ---- 後方視角常數 ---- */
-const CX_POST = 110; // 後方視角中心X（新viewBox 220寬）
+/* ---- 後方視角常數（viewBox 300x660） ---- */
+const CX_POST = 150; // 中心X，viewBox寬300
 
-/* ---- 不再使用正常脊椎（已移除） ---- */
 function drawNormalSpine() { /* 已停用 */ }
 
-/* ---- 後方視角脊椎（橫突 + 棘突 + 旋轉） ---- */
+/* ================================================================
+   X光判讀邏輯：後方視角（AP view）
+   椎體向右前旋轉時：
+     - 椎體本身在X光片上看起來右側較寬（投影效應）
+     - 棘突偏向旋轉側（右側）
+     - 棘突 → 右橫突的視覺距離「較長」（已旋轉到同側）
+     - 棘突 → 左橫突的視覺距離「較短」（已旋轉離開對側）
+   本程式以「棘突在椎體中心的偏移量」來呈現此效應
+================================================================ */
 function drawUserSpine(years) {
   if (!analysisData) return;
-  const { affectedMap, ageFactor, workMult, pelvicType, pelvicSeverity } = analysisData;
+  const { pelvicType, pelvicSeverity } = analysisData;
   const svg = document.getElementById('svgUser');
   if (!svg) return;
   let out = '';
 
-  // 時間加乘的骨盆傾斜程度
   const t2 = years / 100;
   const timeFactor = Math.min(1, 0.12 + 0.88 * (1 - Math.exp(-3.5 * t2)));
   const pelvisTilt = pelvicSeverity * timeFactor;
-
   const CX = CX_POST;
-  // 漸進正常→退化的基準偏移（時間軸=0時趨近正常）
-  const baseNormalFactor = Math.max(0.05, timeFactor);
 
-  // 中心基準線（脊柱中心）
-  out += `<line x1="${CX}" y1="8" x2="${CX}" y2="590" stroke="#d0c8bc" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>`;
-  // 脊髓管（中間細長帶）
-  out += `<rect x="${CX-6}" y="8" width="12" height="580" rx="4" fill="#c4b8a8" opacity="0.18"/>`;
-
-  // 圖例
-  out += `<text x="4" y="14" font-size="8.5" fill="#185FA5" font-family="sans-serif" font-weight="600">左</text>`;
-  out += `<text x="${220-4}" y="14" font-size="8.5" fill="#185FA5" font-family="sans-serif" font-weight="600" text-anchor="end">右</text>`;
+  // 中心基準線
+  out += `<line x1="${CX}" y1="6" x2="${CX}" y2="582" stroke="#d0c8bc" stroke-width="1" stroke-dasharray="4,4" opacity="0.45"/>`;
+  // 脊髓管
+  out += `<rect x="${CX-5}" y="6" width="10" height="575" rx="3" fill="#c4b8a8" opacity="0.15"/>`;
+  // 左右標示
+  out += `<text x="6" y="14" font-size="9" fill="#185FA5" font-family="sans-serif" font-weight="700">左</text>`;
+  out += `<text x="294" y="14" font-size="9" fill="#185FA5" font-family="sans-serif" font-weight="700" text-anchor="end">右</text>`;
 
   let y = 18;
   let totalDisp = 0, count = 0;
   const warnSegs = [];
 
   SEGS_DEF.forEach((seg, i) => {
-    const c = getGroupColor(seg.name);
+    const grpCol = getGroupColor(seg.name);
     const disp = getSegDisplace(seg.name, years);
-    // 旋轉角度：由0(正常)到最大值
+
+    // 旋轉角度計算
     let rotDeg = 0;
     if (disp > 0) {
       const isL = seg.name.startsWith('L');
@@ -620,109 +642,130 @@ function drawUserSpine(years) {
         else if (isC) rotDeg = disp * 0.7;
       }
     }
-    // 旋轉方向：交替左右（脊椎側彎代償）
+    // 旋轉方向交替（代償側彎）
     const rotSign = (i % 2 === 0) ? 1 : -1;
-    const rot = rotSign * Math.min(22, rotDeg);
+    const rot = rotSign * Math.min(22, rotDeg); // 正=向右旋轉，負=向左旋轉
 
-    const compression = Math.min(0.4, disp * 0.032);
-    const adjW = seg.w * Math.max(0.7, 1 - disp * 0.006);
+    // 椎體尺寸（壓縮效應）
+    const compression = Math.min(0.38, disp * 0.03);
+    const adjW = seg.w * Math.max(0.72, 1 - disp * 0.005);
     const adjH = Math.max(5, seg.h * (1 - compression));
-
-    const warnCol = disp > 10 ? '#791F1F' : disp > 6 ? '#A32D2D' : disp > 3 ? '#BA7517' : c.stroke;
-    const fillCol = disp > 10 ? '#E24B4A' : disp > 6 ? '#F09595' : disp > 3 ? '#FAC775' : c.fill;
-    const sw = disp > 6 ? 2.0 : disp > 3 ? 1.4 : 0.7;
-
-    const rad = rot * Math.PI / 180;
-    const cosR = Math.cos(rad), sinR = Math.sin(rad);
+    const hw = adjW / 2;
+    const hh = adjH / 2;
     const segCX = CX;
-    const segCY = y + adjH / 2;
+    const segCY = y + hh;
 
-    // 椎體（旋轉後方形）
-    const hw = adjW / 2, hh = adjH / 2;
-    function rotPt(dx, dy) {
-      return [segCX + dx * cosR - dy * sinR, segCY + dx * sinR + dy * cosR];
-    }
-    const corners = [rotPt(-hw,-hh), rotPt(hw,-hh), rotPt(hw,hh), rotPt(-hw,hh)];
-    const pts = corners.map(p => p.join(',')).join(' ');
-    out += `<polygon points="${pts}" fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="0.9" rx="2"/>`;
+    // 顏色
+    const warnCol = disp > 10 ? '#791F1F' : disp > 6 ? '#A32D2D' : disp > 3 ? '#BA7517' : grpCol.stroke;
+    const fillCol = disp > 10 ? '#E24B4A' : disp > 6 ? '#F09595' : disp > 3 ? '#FAC775' : grpCol.fill;
+    const sw = disp > 6 ? 1.8 : disp > 3 ? 1.2 : 0.6;
 
-    // 左橫突（transverse process）
-    const tpLen = adjW * 0.55 + Math.min(12, disp * 0.8);
-    const tpH = 5;
-    const [tlx, tly] = rotPt(-hw, 0);
-    const [tllx, tlly] = rotPt(-hw - tpLen, -tpH/2);
-    const [tlrx, tlry] = rotPt(-hw - tpLen, tpH/2);
-    out += `<polygon points="${tlx},${tly-tpH/2} ${tllx},${tlly} ${tlrx},${tlry} ${tlx},${tly+tpH/2}" fill="${warnCol}" opacity="0.75"/>`;
+    // ── X光判讀邏輯 ──────────────────────────────────────────
+    // rot > 0 = 椎體向右前旋轉
+    //   棘突向右偏移 → spOffX > 0
+    //   右橫突視覺距離（棘突→右橫突）變長 tpR > tpBase
+    //   左橫突視覺距離（棘突→左橫突）變短 tpL < tpBase
+    //
+    const rotRad = rot * Math.PI / 180;
+    // 棘突偏移量：旋轉角度的 sin 乘以椎體半寬
+    const spOffX = Math.sin(rotRad) * hw * 1.4;
+    // 兩側橫突長度：向旋轉側（短邊看起來長）、對側（長邊看起來短）
+    const tpBase = adjW * 0.42 + 8;
+    const tpR = tpBase + Math.abs(spOffX) * 1.1; // 旋轉方向側較長
+    const tpL = tpBase - Math.abs(spOffX) * 0.8; // 對側較短
+    const tpH = Math.max(3, 4.5 - compression * 4);
 
-    // 右橫突
-    const [trx, try_] = rotPt(hw, 0);
-    const [trlx, trly] = rotPt(hw + tpLen, -tpH/2);
-    const [trrx, trry] = rotPt(hw + tpLen, tpH/2);
-    out += `<polygon points="${trx},${try_-tpH/2} ${trlx},${trly} ${trrx},${trry} ${trx},${try_+tpH/2}" fill="${warnCol}" opacity="0.75"/>`;
+    // 椎體本體（無旋轉，保持水平，旋轉以棘突偏移體現）
+    out += `<rect x="${segCX - hw}" y="${y}" width="${adjW}" height="${adjH}" rx="2.5"
+      fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="0.92"/>`;
 
-    // 棘突（spinous process，朝向讀者=向外，在後方視角顯示為中心向後的突起，用菱形表示）
-    const spLen = adjW > 50 ? 18 : adjW > 42 ? 14 : 10;
-    const [spx, spy] = rotPt(0, -hh);
-    const [sp2x, sp2y] = rotPt(0, -hh - spLen);
+    // 左橫突（較短側，tpL）
+    const lpX = segCX - hw; // 椎體左緣
+    const lpY = segCY;
+    out += `<polygon points="
+      ${lpX},${lpY - tpH/2}
+      ${lpX - tpL},${lpY - tpH * 0.3}
+      ${lpX - tpL},${lpY + tpH * 0.3}
+      ${lpX},${lpY + tpH/2}"
+      fill="${warnCol}" opacity="0.7"/>`;
+
+    // 右橫突（較長側，tpR）
+    const rpX = segCX + hw;
+    const rpY = segCY;
+    out += `<polygon points="
+      ${rpX},${rpY - tpH/2}
+      ${rpX + tpR},${rpY - tpH * 0.3}
+      ${rpX + tpR},${rpY + tpH * 0.3}
+      ${rpX},${rpY + tpH/2}"
+      fill="${warnCol}" opacity="0.7"/>`;
+
+    // 棘突：從椎體上緣中心往上，X位置偏移 spOffX
+    // 向右旋轉（rot>0）→ 棘突偏右（+spOffX）
+    const spBaseX = segCX + spOffX;
+    const spTopY  = y - (adjW > 50 ? 13 : adjW > 42 ? 10 : 8);
     const spW = 5;
-    const [spl, _spl2] = rotPt(-spW/2, -hh - spLen/2);
-    const [spr, _spr2] = rotPt( spW/2, -hh - spLen/2);
-    out += `<polygon points="${spx},${spy} ${spl},${_spl2} ${sp2x},${sp2y} ${spr},${_spr2}" fill="#b8a890" stroke="#8a7860" stroke-width="0.5" opacity="0.9"/>`;
+    out += `<polygon points="
+      ${spBaseX - spW/2},${y}
+      ${spBaseX},${spTopY}
+      ${spBaseX + spW/2},${y}"
+      fill="#b8a890" stroke="#7a6a58" stroke-width="0.6" opacity="0.92"/>`;
 
-    // 旋轉角度標示（有旋轉才顯示）
-    if (Math.abs(rot) > 2) {
-      const rotLabel = rot > 0 ? `→${Math.abs(rot.toFixed(0))}°` : `←${Math.abs(rot.toFixed(0))}°`;
-      const labelCol = Math.abs(rot) > 12 ? '#A32D2D' : '#BA7517';
-      out += `<text x="${segCX}" y="${segCY + adjH/2 + 7}" text-anchor="middle" font-size="6.5" fill="${labelCol}" font-weight="700" font-family="sans-serif">${rotLabel}</text>`;
+    // 棘突偏移指示線（連接椎體中心到棘突頂端，顯示偏移）
+    if (Math.abs(spOffX) > 2) {
+      out += `<line x1="${segCX}" y1="${y}" x2="${spBaseX}" y2="${y}" stroke="${warnCol}" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>`;
     }
 
-    // 節段名稱標示（左側）
-    out += `<text x="4" y="${segCY + 3}" font-size="7.5" fill="${warnCol}" font-family="sans-serif" font-weight="600">${seg.name}</text>`;
+    // 節段名稱（左側）+ 旋轉角度
+    out += `<text x="6" y="${segCY + 3}" font-size="8" fill="${warnCol}" font-family="sans-serif" font-weight="700">${seg.name}</text>`;
+    if (Math.abs(rot) > 1.5) {
+      const arrow = rot > 0 ? '→' : '←';
+      const deg = Math.abs(rot).toFixed(0);
+      const labelCol = Math.abs(rot) > 12 ? '#A32D2D' : '#BA7517';
+      out += `<text x="6" y="${segCY + 12}" font-size="7" fill="${labelCol}" font-weight="700" font-family="sans-serif">${arrow}${deg}°</text>`;
+    }
 
     // 警示圓點（右側）
     if (disp > 2.5) {
       const wc = disp > 9 ? '#791F1F' : disp > 6 ? '#A32D2D' : '#BA7517';
-      out += `<circle cx="${210}" cy="${segCY}" r="5.5" fill="${wc}" opacity="0.85"/>`;
-      out += `<text x="210" y="${segCY + 3.5}" text-anchor="middle" font-size="5.5" fill="#fff" font-weight="700" font-family="sans-serif">${disp>9?'!!':'!'}</text>`;
+      out += `<circle cx="286" cy="${segCY}" r="6" fill="${wc}" opacity="0.85"/>`;
+      out += `<text x="286" y="${segCY + 3.5}" text-anchor="middle" font-size="5.5" fill="#fff" font-weight="700" font-family="sans-serif">${disp>9?'!!':'!'}</text>`;
       warnSegs.push({ r: seg.name, disp });
     }
 
-    // 椎間盤（後方視角：橫帶）
+    // 椎間盤（受壓變色）
     if (i < SEGS_DEF.length - 1) {
-      const nextDisp = getSegDisplace(SEGS_DEF[i+1].name, years);
-      const avgD = (disp + nextDisp) / 2;
-      const discCol = avgD > 8 ? '#791F1F' : avgD > 5 ? '#E24B4A' : avgD > 2 ? '#BA7517' : null;
-      const dFill = discCol || 'url(#ds-u)';
-      out += `<rect x="${CX - adjW/2 + 5}" y="${y + adjH}" width="${adjW - 10}" height="4" rx="2" fill="${dFill}" opacity="0.8"/>`;
+      const nd = getSegDisplace(SEGS_DEF[i+1].name, years);
+      const avgD = (disp + nd) / 2;
+      const dCol = avgD > 8 ? '#791F1F' : avgD > 5 ? '#E24B4A' : avgD > 2 ? '#BA7517' : null;
+      const dFill = dCol || 'url(#ds-u)';
+      const discW = adjW - 10;
+      out += `<rect x="${segCX - discW/2}" y="${y + adjH}" width="${discW}" height="3.5" rx="1.5" fill="${dFill}" opacity="0.82"/>`;
     }
 
     if (disp > 0) { totalDisp += disp; count++; }
     y += seg.h + DISC_H;
   });
 
-  // 圖例說明
-  out += `<g transform="translate(4, ${y + 10})">
-    <rect x="0" y="0" width="7" height="7" fill="#b8a890" rx="1"/>
-    <text x="10" y="7" font-size="7" fill="#666" font-family="sans-serif">棘突</text>
-    <rect x="0" y="12" width="12" height="5" fill="#BA7517" rx="1" opacity="0.75"/>
-    <text x="16" y="18" font-size="7" fill="#666" font-family="sans-serif">橫突</text>
-    <text x="0" y="30" font-size="7" fill="#A32D2D" font-family="sans-serif">→° 旋轉角度</text>
+  // 骨盆
+  out += drawPelvis(CX, y + 48, pelvisTilt, pelvicType, true);
+  out += `<text x="${CX}" y="${y + 118}" text-anchor="middle" font-size="9" fill="#888780" font-family="sans-serif">${years===0?'目前狀態':'未來'+years+'年後預測'}</text>`;
+
+  // 圖例（右下角）
+  out += `<g transform="translate(${CX+60}, ${y+8})">
+    <polygon points="4,0 8,10 0,10" fill="#b8a890" stroke="#7a6a58" stroke-width="0.5"/>
+    <text x="12" y="9" font-size="7.5" fill="#5F5E5A" font-family="sans-serif">棘突</text>
+    <polygon points="0,16 14,14.5 14,17.5 0,22" fill="#BA7517" opacity="0.7"/>
+    <text x="18" y="21" font-size="7.5" fill="#5F5E5A" font-family="sans-serif">橫突</text>
+    <text x="0" y="32" font-size="7" fill="#BA7517" font-family="sans-serif">→° 旋轉方向</text>
+    <text x="0" y="41" font-size="7" fill="#A32D2D" font-family="sans-serif">!! 需注意</text>
   </g>`;
-
-  // 骨盆（含傾斜動態）
-  out += drawPelvis(CX, y + 55, pelvisTilt, pelvicType, true);
-  out += `<text x="${CX}" y="${y + 130}" text-anchor="middle" font-size="9.5" fill="#888780" font-family="sans-serif">${years===0?'目前狀態':years+'年後預測'}</text>`;
-
-  // 警示圖例
-  if (warnSegs.length > 0) {
-    out += `<text x="${CX + 55}" y="360" text-anchor="start" font-size="7.5" fill="#BA7517" font-family="sans-serif">! 需注意</text>`;
-    out += `<text x="${CX + 55}" y="372" text-anchor="start" font-size="7.5" fill="#A32D2D" font-family="sans-serif">!! 嚴重</text>`;
-  }
 
   // defs
   out = `<defs>
     <linearGradient id="ds-u" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7090a8"/><stop offset="45%" stop-color="#c0daf0"/><stop offset="100%" stop-color="#7090a8"/>
+      <stop offset="0%" stop-color="#7090a8"/>
+      <stop offset="45%" stop-color="#c0daf0"/>
+      <stop offset="100%" stop-color="#7090a8"/>
     </linearGradient>
   </defs>` + out;
 
@@ -785,13 +828,13 @@ function renderSegmentBars(years) {
     const pct = Math.min(100, disp * 7.5);
     const color = pct < 30 ? '#185FA5' : pct < 60 ? '#BA7517' : '#A32D2D';
     const c = getGroupColor(r);
-    html += `<div style="margin-bottom:10px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-        <span style="font-size:13px;font-weight:500;color:${c.text};">${r}</span>
-        <span style="font-size:12px;color:var(--color-text-tertiary);">${disp.toFixed(1)}</span>
+    html += `<div style="margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+        <span style="font-size:26px;font-weight:600;color:${c.text};">${r}</span>
+        <span style="font-size:24px;font-weight:500;color:${color};">${disp.toFixed(1)}</span>
       </div>
-      <div style="height:6px;background:var(--color-border-tertiary);border-radius:3px;overflow:hidden;">
-        <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;transition:width 0.3s;"></div>
+      <div style="height:10px;background:var(--color-border-tertiary);border-radius:5px;overflow:hidden;">
+        <div style="height:100%;width:${pct}%;background:${color};border-radius:5px;transition:width 0.3s;"></div>
       </div></div>`;
   });
   if (!html) html = '<div style="font-size:13px;color:var(--color-text-tertiary);">尚無錯位數據</div>';
