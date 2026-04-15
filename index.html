@@ -13,7 +13,7 @@
   .field label { font-size: 14px; color: var(--color-text-secondary); display: block; margin-bottom: 5px; }
   .field input, .field select { width: 100%; font-size: 16px; }
   .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1rem 0; }
-  .section-label { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.65rem; }
+  .section-label { font-size: 15px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.65rem; }
 
   .selected-slots { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 0.85rem; }
   .slot-box { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px; min-height: 62px; display: flex; flex-direction: column; justify-content: center; background: var(--color-background-secondary); transition: all 0.2s; }
@@ -29,7 +29,7 @@
     border-radius: var(--border-radius-md);
     padding: 12px 4px 10px;
     background: var(--color-background-primary);
-    cursor: pointer; font-size: 13px; color: var(--color-text-secondary);
+    cursor: pointer; font-size: 15px; color: var(--color-text-secondary);
     text-align: center; transition: all 0.15s; line-height: 1.4; position: relative;
   }
   .posture-btn:hover { background: var(--color-background-secondary); }
@@ -61,9 +61,8 @@
   .tl-slider { width: 100%; accent-color: #185FA5; }
   .tl-marks { display: flex; justify-content: space-between; font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
 
-  /* Compare */
-  .compare-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
-  @media(max-width:480px){ .compare-wrap { grid-template-columns:1fr; } }
+  /* Single spine panel */
+  .compare-wrap { display: block; margin-bottom: 0.85rem; }
   .spine-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0.75rem 0.5rem; }
   .panel-head { display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; justify-content: center; }
   .panel-badge { font-size: 12px; padding: 3px 10px; border-radius: 999px; font-weight: 500; }
@@ -88,12 +87,12 @@
   @media(max-width:560px){ .result-grid { grid-template-columns:1fr; } }
   .symptom-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0.85rem; }
   .symptom-list { list-style: none; }
-  .symptom-list li { font-size: 13px; color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; align-items: flex-start; gap: 7px; line-height: 1.6; }
+  .symptom-list li { font-size: 15px; color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; align-items: flex-start; gap: 7px; line-height: 1.6; }
   .symptom-list li:last-child { border-bottom: none; }
   .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
   .dot-warn { background: #BA7517; } .dot-danger { background: #A32D2D; } .dot-info { background: #185FA5; }
 
-  .alert { background: #FAEEDA; border: 0.5px solid #FAC775; border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 13px; color: #633806; margin-bottom: 0.85rem; line-height: 1.6; }
+  .alert { background: #FAEEDA; border: 0.5px solid #FAC775; border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 15px; color: #633806; margin-bottom: 0.85rem; line-height: 1.6; }
   .cta-card { background: #E6F1FB; border: 0.5px solid #B5D4F4; border-radius: var(--border-radius-lg); padding: 1.1rem; text-align: center; margin-top: 1rem; }
   .cta-card h3 { font-size: 17px; font-weight: 500; color: #0C447C; margin-bottom: 0.4rem; }
   .cta-card p { font-size: 13px; color: #185FA5; margin-bottom: 0.75rem; line-height: 1.6; }
@@ -130,6 +129,9 @@
     <input type="hidden" id="userEmail" value="—">
 
     <div class="section-label">脊椎分析設定</div>
+    <div style="font-size:15px; color:var(--color-text-secondary); background:var(--color-background-secondary); border-radius:8px; padding:10px 14px; margin-bottom:0.85rem; line-height:1.7; border-left:3px solid #185FA5;">
+      ⚠️ 脊椎分析設定 請再次確認 <strong>年齡 / 工作姿勢 / 慣用姿勢</strong>
+    </div>
     <div class="form-row" style="margin-bottom: 1rem;">
       <div class="field"><label>年齡</label>
         <select id="userAge">
@@ -149,11 +151,11 @@
       </div>
     </div>
 
-    <div class="section-label">慣用錯誤姿勢 <span style="font-size:11px;color:var(--color-text-tertiary);text-transform:none;letter-spacing:0;">（點一下即時查看 · 可多選）</span></div>
+    <div class="section-label">慣用錯誤姿勢 <span style="font-size:14px;color:var(--color-text-tertiary);text-transform:none;letter-spacing:0;font-weight:400;">（點一下即時查看 · 可多選）</span></div>
     <div id="selectedChips" style="display:flex;flex-wrap:wrap;gap:6px;min-height:36px;margin-bottom:10px;align-items:center;"></div>
     <div class="posture-grid" id="postureGrid"></div>
-    <div style="margin-top:8px;font-size:12px;color:var(--color-text-tertiary);line-height:1.6;">
-      ▶ 圖中右側三角形 = 棘突（脊椎後方骨性突起，頸後可摸到的硬骨）
+    <div style="margin-top:8px;font-size:14px;color:var(--color-text-tertiary);line-height:1.7;">
+      ▶ 圖中菱形 = 棘突（脊椎後方骨性突起，頸後可摸到的硬骨）　▶ 兩側突出 = 橫突　▶ 數字角度 = 旋轉方向與幅度
     </div>
   </div>
 
@@ -172,18 +174,14 @@
       </div>
     </div>
 
-    <!-- 左右對比（含骨盆） -->
+    <!-- 單一脊椎圖（由正常到退化，隨時間軸變化） -->
     <div class="compare-wrap">
-      <div class="spine-panel">
-        <div class="panel-head"><span class="panel-badge badge-normal">正常脊椎</span><span class="panel-title">標準對照</span></div>
-        <svg id="svgNormal" viewBox="0 0 170 660" width="100%" style="display:block;margin:0 auto;"></svg>
-      </div>
       <div class="spine-panel">
         <div class="panel-head">
           <span class="panel-badge badge-current" id="currentBadge">現在狀態</span>
-          <span class="panel-title" id="currentTitle">您的脊椎</span>
+          <span class="panel-title" id="currentTitle">您的脊椎（後方視角）</span>
         </div>
-        <svg id="svgUser" viewBox="0 0 170 660" width="100%" style="display:block;margin:0 auto;"></svg>
+        <svg id="svgUser" viewBox="0 0 220 720" width="100%" style="display:block;margin:0 auto;max-width:360px;"></svg>
         <div class="index-info-bar" id="indexInfo"></div>
         <div class="pelvis-info" id="pelvisInfo"></div>
       </div>
@@ -473,7 +471,6 @@ function onYearSlide(val) {
 }
 
 function renderAll(years) {
-  drawNormalSpine();
   drawUserSpine(years);
   renderSymptoms(years);
   renderSegmentBars(years);
@@ -562,135 +559,172 @@ function drawPelvis(cx, topY, tiltT, pelvicType, isUser) {
   return out;
 }
 
-/* ---- 正常脊椎 ---- */
-function drawNormalSpine() {
-  const svg = document.getElementById('svgNormal');
-  let out = '';
-  out += spineDefs('n');
-  // 中心基準線
-  out += `<line x1="${CX}" y1="10" x2="${CX}" y2="500" stroke="#d0c8bc" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>`;
-  // 脊髓管
-  out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.2"/>`;
+/* ---- 骨盆繪製（後方視角已整合在 drawUserSpine）---- */
 
-  let y = 10;
-  SEGS_DEF.forEach((seg, i) => {
-    const c = getGroupColor(seg.name);
-    const bx = CX - seg.w / 2;
-    out += `<rect x="${bx}" y="${y}" width="${seg.w}" height="${seg.h}" rx="3" fill="${c.fill}" stroke="${c.stroke}" stroke-width="0.6" opacity="0.85"/>`;
-    out += `<ellipse cx="${CX}" cy="${y}" rx="${seg.w/2}" ry="3.5" fill="#f4ede0" stroke="${c.stroke}" stroke-width="0.4" opacity="0.8"/>`;
-    out += spinousProcess(CX, y, seg.w, seg.h, 'n');
-    out += `<text x="${CX - seg.w/2 - 3}" y="${y + seg.h/2 + 3.5}" text-anchor="end" font-size="8" fill="${c.text}" font-family="sans-serif" font-weight="500">${seg.name}</text>`;
-    if (i < SEGS_DEF.length - 1) {
-      out += `<rect x="${CX - seg.w/2 + 4}" y="${y + seg.h}" width="${seg.w - 8}" height="${DISC_H}" rx="2" fill="url(#ds-n)" opacity="0.85"/>`;
-    }
-    y += seg.h + DISC_H;
-  });
+/* ---- 舊版 drawUserSpine 已由上方後方視角版本取代 ---- */
 
-  // 骨盆（正常）
-  out += drawPelvis(CX, y + 20, 0, 'normal', false);
-  out += `<text x="${CX}" y="${y + 90}" text-anchor="middle" font-size="9" fill="#888780" font-family="sans-serif">正常排列</text>`;
-  svg.innerHTML = out;
-}
+/* ---- 後方視角常數 ---- */
+const CX_POST = 110; // 後方視角中心X（新viewBox 220寬）
 
-/* ---- 使用者脊椎（含骨盆傾斜） ---- */
+/* ---- 不再使用正常脊椎（已移除） ---- */
+function drawNormalSpine() { /* 已停用 */ }
+
+/* ---- 後方視角脊椎（橫突 + 棘突 + 旋轉） ---- */
 function drawUserSpine(years) {
   if (!analysisData) return;
   const { affectedMap, ageFactor, workMult, pelvicType, pelvicSeverity } = analysisData;
   const svg = document.getElementById('svgUser');
+  if (!svg) return;
   let out = '';
-  out += spineDefs('u');
 
   // 時間加乘的骨盆傾斜程度
   const t2 = years / 100;
   const timeFactor = Math.min(1, 0.12 + 0.88 * (1 - Math.exp(-3.5 * t2)));
   const pelvisTilt = pelvicSeverity * timeFactor;
 
-  // 中心基準線（對照用）
-  out += `<line x1="${CX}" y1="10" x2="${CX}" y2="500" stroke="#d0c8bc" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.4"/>`;
-  // 脊髓管
-  out += `<rect x="${CX-5}" y="10" width="10" height="490" rx="3" fill="#c4b8a8" opacity="0.15"/>`;
+  const CX = CX_POST;
+  // 漸進正常→退化的基準偏移（時間軸=0時趨近正常）
+  const baseNormalFactor = Math.max(0.05, timeFactor);
 
-  let y = 10;
+  // 中心基準線（脊柱中心）
+  out += `<line x1="${CX}" y1="8" x2="${CX}" y2="590" stroke="#d0c8bc" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>`;
+  // 脊髓管（中間細長帶）
+  out += `<rect x="${CX-6}" y="8" width="12" height="580" rx="4" fill="#c4b8a8" opacity="0.18"/>`;
+
+  // 圖例
+  out += `<text x="4" y="14" font-size="8.5" fill="#185FA5" font-family="sans-serif" font-weight="600">左</text>`;
+  out += `<text x="${220-4}" y="14" font-size="8.5" fill="#185FA5" font-family="sans-serif" font-weight="600" text-anchor="end">右</text>`;
+
+  let y = 18;
   let totalDisp = 0, count = 0;
   const warnSegs = [];
 
   SEGS_DEF.forEach((seg, i) => {
     const c = getGroupColor(seg.name);
     const disp = getSegDisplace(seg.name, years);
-
-    // 根據骨盆類型計算各段偏移
-    let dx = 0;
+    // 旋轉角度：由0(正常)到最大值
+    let rotDeg = 0;
     if (disp > 0) {
       const isL = seg.name.startsWith('L');
       const isT = seg.name.startsWith('T');
       const isC = seg.name.startsWith('C');
       const lNum = isL ? parseInt(seg.name[1]) : 0;
       const tNum = isT ? parseInt(seg.name.substring(1)) : 0;
-
       if (pelvicType === 'sit') {
-        if (isL) dx = disp * (lNum <= 2 ? -1.2 : -2.0);
-        else if (isT) dx = disp * (tNum > 6 ? 1.0 : 0.5);
-        else if (isC) dx = disp * 1.4;
+        if (isL) rotDeg = disp * (lNum <= 2 ? 1.0 : 1.6);
+        else if (isT) rotDeg = disp * (tNum > 6 ? 0.8 : 0.4);
+        else if (isC) rotDeg = disp * 1.2;
       } else {
-        if (isL) dx = disp * (lNum <= 3 ? -1.5 : -0.9);
-        else if (isT) dx = disp * (tNum > 6 ? 1.2 : 0.6);
-        else if (isC) dx = disp * 0.8;
+        if (isL) rotDeg = disp * (lNum <= 3 ? 1.3 : 0.7);
+        else if (isT) rotDeg = disp * (tNum > 6 ? 1.0 : 0.5);
+        else if (isC) rotDeg = disp * 0.7;
       }
     }
+    // 旋轉方向：交替左右（脊椎側彎代償）
+    const rotSign = (i % 2 === 0) ? 1 : -1;
+    const rot = rotSign * Math.min(22, rotDeg);
 
-    const compression = Math.min(0.45, disp * 0.035); // 椎體壓縮（變矮）
-    const adjW = seg.w * Math.max(0.7, 1 - disp * 0.008); // 寬度幾乎不變
-    const adjH = Math.max(5, seg.h * (1 - compression));  // 壓縮後變矮
-    const bx = CX + dx - adjW / 2;
+    const compression = Math.min(0.4, disp * 0.032);
+    const adjW = seg.w * Math.max(0.7, 1 - disp * 0.006);
+    const adjH = Math.max(5, seg.h * (1 - compression));
+
     const warnCol = disp > 10 ? '#791F1F' : disp > 6 ? '#A32D2D' : disp > 3 ? '#BA7517' : c.stroke;
     const fillCol = disp > 10 ? '#E24B4A' : disp > 6 ? '#F09595' : disp > 3 ? '#FAC775' : c.fill;
     const sw = disp > 6 ? 2.0 : disp > 3 ? 1.4 : 0.7;
-    const segOpacity = disp > 3 ? 1.0 : 0.85;
 
-    out += `<rect x="${bx}" y="${y}" width="${adjW}" height="${adjH}" rx="3" fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="${segOpacity}"/>`;
-    // 正常側（左側）也顯示淡色警示，讓兩側都有顏色變化
-    if (disp > 3) {
-      out += `<rect x="${CX - seg.w/2}" y="${y}" width="${seg.w}" height="${seg.h}" rx="3" fill="${fillCol}" stroke="${warnCol}" stroke-width="0.5" opacity="0.22"/>`;
+    const rad = rot * Math.PI / 180;
+    const cosR = Math.cos(rad), sinR = Math.sin(rad);
+    const segCX = CX;
+    const segCY = y + adjH / 2;
+
+    // 椎體（旋轉後方形）
+    const hw = adjW / 2, hh = adjH / 2;
+    function rotPt(dx, dy) {
+      return [segCX + dx * cosR - dy * sinR, segCY + dx * sinR + dy * cosR];
     }
-    out += `<ellipse cx="${CX+dx}" cy="${y}" rx="${adjW/2}" ry="3.5" fill="#f4ede0" stroke="${warnCol}" stroke-width="0.4" opacity="0.8"/>`;
-    out += spinousProcess(CX + dx, y, adjW, adjH, 'u');
-    out += `<text x="${CX+dx - adjW/2 - 3}" y="${y + adjH/2 + 3.5}" text-anchor="end" font-size="8" fill="${warnCol}" font-family="sans-serif" font-weight="600">${seg.name}</text>`;
+    const corners = [rotPt(-hw,-hh), rotPt(hw,-hh), rotPt(hw,hh), rotPt(-hw,hh)];
+    const pts = corners.map(p => p.join(',')).join(' ');
+    out += `<polygon points="${pts}" fill="${fillCol}" stroke="${warnCol}" stroke-width="${sw}" opacity="0.9" rx="2"/>`;
 
-    // 椎間盤（受壓變色）
+    // 左橫突（transverse process）
+    const tpLen = adjW * 0.55 + Math.min(12, disp * 0.8);
+    const tpH = 5;
+    const [tlx, tly] = rotPt(-hw, 0);
+    const [tllx, tlly] = rotPt(-hw - tpLen, -tpH/2);
+    const [tlrx, tlry] = rotPt(-hw - tpLen, tpH/2);
+    out += `<polygon points="${tlx},${tly-tpH/2} ${tllx},${tlly} ${tlrx},${tlry} ${tlx},${tly+tpH/2}" fill="${warnCol}" opacity="0.75"/>`;
+
+    // 右橫突
+    const [trx, try_] = rotPt(hw, 0);
+    const [trlx, trly] = rotPt(hw + tpLen, -tpH/2);
+    const [trrx, trry] = rotPt(hw + tpLen, tpH/2);
+    out += `<polygon points="${trx},${try_-tpH/2} ${trlx},${trly} ${trrx},${trry} ${trx},${try_+tpH/2}" fill="${warnCol}" opacity="0.75"/>`;
+
+    // 棘突（spinous process，朝向讀者=向外，在後方視角顯示為中心向後的突起，用菱形表示）
+    const spLen = adjW > 50 ? 18 : adjW > 42 ? 14 : 10;
+    const [spx, spy] = rotPt(0, -hh);
+    const [sp2x, sp2y] = rotPt(0, -hh - spLen);
+    const spW = 5;
+    const [spl, _spl2] = rotPt(-spW/2, -hh - spLen/2);
+    const [spr, _spr2] = rotPt( spW/2, -hh - spLen/2);
+    out += `<polygon points="${spx},${spy} ${spl},${_spl2} ${sp2x},${sp2y} ${spr},${_spr2}" fill="#b8a890" stroke="#8a7860" stroke-width="0.5" opacity="0.9"/>`;
+
+    // 旋轉角度標示（有旋轉才顯示）
+    if (Math.abs(rot) > 2) {
+      const rotLabel = rot > 0 ? `→${Math.abs(rot.toFixed(0))}°` : `←${Math.abs(rot.toFixed(0))}°`;
+      const labelCol = Math.abs(rot) > 12 ? '#A32D2D' : '#BA7517';
+      out += `<text x="${segCX}" y="${segCY + adjH/2 + 7}" text-anchor="middle" font-size="6.5" fill="${labelCol}" font-weight="700" font-family="sans-serif">${rotLabel}</text>`;
+    }
+
+    // 節段名稱標示（左側）
+    out += `<text x="4" y="${segCY + 3}" font-size="7.5" fill="${warnCol}" font-family="sans-serif" font-weight="600">${seg.name}</text>`;
+
+    // 警示圓點（右側）
+    if (disp > 2.5) {
+      const wc = disp > 9 ? '#791F1F' : disp > 6 ? '#A32D2D' : '#BA7517';
+      out += `<circle cx="${210}" cy="${segCY}" r="5.5" fill="${wc}" opacity="0.85"/>`;
+      out += `<text x="210" y="${segCY + 3.5}" text-anchor="middle" font-size="5.5" fill="#fff" font-weight="700" font-family="sans-serif">${disp>9?'!!':'!'}</text>`;
+      warnSegs.push({ r: seg.name, disp });
+    }
+
+    // 椎間盤（後方視角：橫帶）
     if (i < SEGS_DEF.length - 1) {
       const nextDisp = getSegDisplace(SEGS_DEF[i+1].name, years);
       const avgD = (disp + nextDisp) / 2;
       const discCol = avgD > 8 ? '#791F1F' : avgD > 5 ? '#E24B4A' : avgD > 2 ? '#BA7517' : null;
-      const dx2 = (dx + (pelvicType === 'sit' ? (SEGS_DEF[i+1].name.startsWith('L') ? -0.35 : 0.2) : 0.1) * nextDisp) / 2;
-      if (discCol) {
-        out += `<rect x="${CX+dx2 - adjW/2+4}" y="${y+adjH}" width="${adjW-8}" height="${DISC_H}" rx="2" fill="${discCol}" opacity="0.7"/>`;
-      } else {
-        out += `<rect x="${CX+dx2 - adjW/2+4}" y="${y+adjH}" width="${adjW-8}" height="${DISC_H}" rx="2" fill="url(#ds-u)" opacity="0.8"/>`;
-      }
-    }
-
-    // 警示圓點
-    if (disp > 2.5) {
-      const wx = CX + dx + adjW/2 + 8;
-      const wc = disp > 9 ? '#791F1F' : disp > 6 ? '#A32D2D' : '#BA7517';
-      out += `<circle cx="${wx}" cy="${y+adjH/2}" r="6" fill="${wc}" opacity="0.85"/>`;
-      out += `<text x="${wx}" y="${y+adjH/2+3.5}" text-anchor="middle" font-size="6" fill="#fff" font-weight="700" font-family="sans-serif">${disp>9?'!!':'!'}</text>`;
-      warnSegs.push({ r: seg.name, wx, wy: y + adjH/2, disp });
+      const dFill = discCol || 'url(#ds-u)';
+      out += `<rect x="${CX - adjW/2 + 5}" y="${y + adjH}" width="${adjW - 10}" height="4" rx="2" fill="${dFill}" opacity="0.8"/>`;
     }
 
     if (disp > 0) { totalDisp += disp; count++; }
     y += seg.h + DISC_H;
   });
 
+  // 圖例說明
+  out += `<g transform="translate(4, ${y + 10})">
+    <rect x="0" y="0" width="7" height="7" fill="#b8a890" rx="1"/>
+    <text x="10" y="7" font-size="7" fill="#666" font-family="sans-serif">棘突</text>
+    <rect x="0" y="12" width="12" height="5" fill="#BA7517" rx="1" opacity="0.75"/>
+    <text x="16" y="18" font-size="7" fill="#666" font-family="sans-serif">橫突</text>
+    <text x="0" y="30" font-size="7" fill="#A32D2D" font-family="sans-serif">→° 旋轉角度</text>
+  </g>`;
+
   // 骨盆（含傾斜動態）
-  out += drawPelvis(CX, y + 20, pelvisTilt, pelvicType, true);
-  out += `<text x="${CX}" y="${y + 90}" text-anchor="middle" font-size="9" fill="#888780" font-family="sans-serif">${years===0?'目前狀態':years+'年後預測'}</text>`;
+  out += drawPelvis(CX, y + 55, pelvisTilt, pelvicType, true);
+  out += `<text x="${CX}" y="${y + 130}" text-anchor="middle" font-size="9.5" fill="#888780" font-family="sans-serif">${years===0?'目前狀態':years+'年後預測'}</text>`;
 
   // 警示圖例
   if (warnSegs.length > 0) {
-    out += `<text x="${CX + 50}" y="340" text-anchor="start" font-size="7.5" fill="#BA7517" font-family="sans-serif">! 需注意</text>`;
-    out += `<text x="${CX + 50}" y="350" text-anchor="start" font-size="7.5" fill="#A32D2D" font-family="sans-serif">!! 嚴重</text>`;
+    out += `<text x="${CX + 55}" y="360" text-anchor="start" font-size="7.5" fill="#BA7517" font-family="sans-serif">! 需注意</text>`;
+    out += `<text x="${CX + 55}" y="372" text-anchor="start" font-size="7.5" fill="#A32D2D" font-family="sans-serif">!! 嚴重</text>`;
   }
+
+  // defs
+  out = `<defs>
+    <linearGradient id="ds-u" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7090a8"/><stop offset="45%" stop-color="#c0daf0"/><stop offset="100%" stop-color="#7090a8"/>
+    </linearGradient>
+  </defs>` + out;
 
   svg.innerHTML = out;
 
@@ -706,7 +740,7 @@ function drawUserSpine(years) {
   document.getElementById('indexInfo').innerHTML =
     `<span class="risk-badge risk-${lvl}">${lt}</span>
      <div class="severity-bar">${bars}</div>
-     <div style="font-size:12px;color:var(--color-text-tertiary);">錯位指數 ${oi.toFixed(1)} / 10（${years===0?'目前':years+'年後'}）</div>`;
+     <div style="font-size:13px;color:var(--color-text-tertiary);">錯位指數 ${oi.toFixed(1)} / 10（${years===0?'目前':years+'年後'}）</div>`;
 
   // 骨盆狀態說明
   const ptLabel = pelvicType === 'sit' ? '骨盆後傾（久坐型）' : '骨盆側傾（重心偏移型）';
@@ -714,24 +748,6 @@ function drawUserSpine(years) {
   const ptCol = ptDeg < 5 ? '#27500A' : ptDeg < 10 ? '#854F0B' : '#791F1F';
   document.getElementById('pelvisInfo').innerHTML =
     `<span style="color:${ptCol};font-weight:500;">地基：${ptLabel}</span>　傾斜約 ${ptDeg}°`;
-}
-
-function spineDefs(id) {
-  return `<defs>
-    <linearGradient id="vb-${id}" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ddd0c0"/><stop offset="35%" stop-color="#f0e4d0"/>
-      <stop offset="70%" stop-color="#d0c4b0"/><stop offset="100%" stop-color="#b0a090"/>
-    </linearGradient>
-    <linearGradient id="ds-${id}" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7090a8"/><stop offset="45%" stop-color="#c0daf0"/><stop offset="100%" stop-color="#7090a8"/>
-    </linearGradient>
-  </defs>`;
-}
-
-function spinousProcess(cx, y, w, h, id) {
-  const spLen = w > 50 ? 14 : w > 42 ? 11 : 8;
-  return `<path d="M${cx+w/2},${y+h*0.35} Q${cx+w/2+spLen*0.55},${y+h*0.48} ${cx+w/2+spLen},${y+h*0.55} Q${cx+w/2+spLen*0.55},${y+h*0.68} ${cx+w/2},${y+h*0.72}Z"
-    fill="#c8b8a0" stroke="#9a8870" stroke-width="0.4"/>`;
 }
 
 /* ===================== 症狀 & 進度條 ===================== */
